@@ -246,16 +246,50 @@ span.number{
         height: auto !important;
     }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 941px) {
+    
+    .sidenav {
+        display: block !important;
+    }
     .button.list-button{
         display: none !important;
     }
+}
+
+@media screen and (max-width: 940px) {
+    
+    .palette{
+        border-radius: 0 !important;
+        display: grid;
+        grid-gap: 8px 8px !important;
+        grid-template-columns: auto auto auto auto auto auto  !important;
+        padding: 0 64px 0 64px !important;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+        margin-bottom: 8px !important;
+        justify-content: space-between;
+    }
+    .skill-palette-container{
+        border-radius: 0 !important;
+    }
+    .sidenav {
+        position: absolute !important;
+        margin-right: 0px !important;
+        width: 100% !important;
+        display: none;
+    }
+    .content{
+        margin-right: 48px;
+    }
+}
+@media screen and (min-width: 769px) {
+    
     .timmer{
         display: none !important;
     }
-    .content {
+    /* .content {
         margin-right: 316px;
-    }
+    } */
     .info-submit{
         width: 760px !important;
         display: inline-grid !important;
@@ -268,9 +302,7 @@ span.number{
         padding-right: 32px !important;
         
     }
-    .sidenav {
-        display: block !important;
-    }
+    
     .submit-start-grid {
         display: flex !important;
         float: left;
@@ -310,13 +342,7 @@ span.number{
         margin-left: 32px;
         margin-right: 32px;
     }
-    .sidenav {
-        position: absolute !important;
-        margin-right: 0px !important;
-        width: 100% !important;
-        display: none;
-    }
-
+   
     .palette{
         border-radius: 0 !important;
         display: grid;
@@ -399,7 +425,7 @@ span.number{
     
     }
     .message{
-        width: 400px !important;
+        width: 400px;
         margin-left: auto !important;
         margin-right: auto !important;
     }
@@ -414,9 +440,11 @@ span.number{
         display: none;
     }
     .content{
-        margin-left: 10px;
-        margin-right: 0px;
-        padding-right: 6px;
+        width: auto !important;
+        margin-left: 10px !important;
+        margin-right: 0 !important;
+        padding-right: 4px !important;
+
     }
     .img-content{
         width: 100% !important;
