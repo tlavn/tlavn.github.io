@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <audio controls id="reading-timeout" style="display: none; z-index: 13;" >
+        <source src="assets/audio/reading-timeout.mp3" type="audio/mp3">
+    </audio>
+    <audio controls id="reading-scf" style="display: none; z-index: 13;" >
+        <source src="assets/audio/reading-scf.mp3" type="audio/mp3">
+    </audio>
+    <!-- TIMEOUT  NOTI-->
+    <div id="timeout" class="hide">
+        <div class="timeout-container">
+            <div class="timeout-description">
+                    <p style="font-size: 24px; font-weight: 700; text-align: center;">TIME OUT</p>
+                <br>
+                <p>Time has expired for this Reading Test, please go back the Room to get a link for the next test. </p>
+                <br>
+                <!-- <div class="timeout-btn" onclick="window.location.href = 'reading.html'" >
+                    Continue
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPLETED  NOTI-->
+    <div id="completed" class="hide" style="z-index: 13;">
+        <div class="timeout-container">
+            <div class="timeout-description">
+                    <p style="font-size: 24px; font-weight: 700; text-align: center;">SUCESSFULLY</p>
+                <br>
+                <p>Your answers have been submitted successfully, please go back the Room to get a link for the next test.</p>
+                <br>
+                <!-- <div class="timeout-btn" onclick="window.location.href = 'reading.html'">
+                    Continue
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+     
+
+
+    <form action="https://sheetdb.io/api/v1/i5of2hbt10k3v" method="POST" id="sheetdb-form" >
+        <input id="time" name="data[time]" type="hidden" form="sheetdb-form"  />
+    </form>
+    <!-- CONFIRM TO START NOTI-->
+    <div id="confirm-start">
+        <div class="confirm-start-container">
+            <div class="start-description">
+                <p style="font-size: 24px; font-weight: 700; text-align: center; color: #C0392B;">IELTS MOCK TEST TLA 2021</p>
+            <p style="font-size: 18px;"><b> Academic Reading</b> </p> <br>
+            <p style="text-align: justify;">
+                <b>Format:</b>  Three reading passages with a variety of questions using a number of task types.
+                <br><br>
+                <b>Timing:</b>  60 minutes
+                <br><br>
+                <b>No. of questions:</b>  40
+                <br><br>
+                <b>Answering:</b>  Test takers are required to transfer their answers to an answer sheet during the time allowed for the test. No extra time is allowed for transfer. 
+                Care should be taken when writing answers on the answer sheet as poor spelling and grammar are penalised.
+                <br>
+            </p>
+            <br>
+            <p style="text-align: justify; color:#192A56 !important;">
+                <img class="icon" src="assets/icon/warning.svg" style="display: inline-block; line-height: 30px; height: 28px !important;">
+                <span style="color:#192A56 !important; vertical-align:middle;"> <b> The countdown timer will begin when you click on Start.</b>  </span> 
+            </p>
+            
+            </div>
+            <br>
+
+            
+            <div class="info-submit">
+                <!-- INPUT NAME -->
+                <div class="submit-start-grid">
+                    <label for="name">
+                        <p>ID</p> 
+                        <input autocomplete="new-password" type="text" form="sheetdb-form" name="data[name]" placeholder="Enter your ID" onkeypress="return event.keyCode != 13;">
+                    </label>
+                </div>
+                
+                <!-- INPUT KEY -->
+                <div class="submit-start-grid"> 
+                    <label for="key">
+                        <p>Key</p>
+                        <input id="password" type="password" placeholder="Enter a private key" onkeypress="return event.keyCode != 13;">
+                    </label>
+                
+                </div>
+                <!-- CHECK KEY AND START -->
+                <div>
+                    <label for="start">
+                        <p></p>
+                        <input id="startbtn" type="button" value="Start" class="start-btn">
+                    </label>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+  
+    <!-- HEADER -->
+        <header class="header">
+            <div class="header-container">
+                <div class="skill-name">
+                    READING
+                </div>
+                
+                <div class="timer">
+                    <img style="height: 20px; vertical-align:middle;" src="assets/icon/time.svg" alt="">
+                    <b>
+                        <span id="timer" style="font-size: 20px !important;">60:00</span>
+                    </b>
+                   
+                </div>
+                <div class="event-name">
+                    IELTS MOCK TEST
+                </div>
+            </div>
+        </header>
+
+     <!-- SIDENAV -->
+     <div id="sidenav" class="sidenav" data-is-show="0" >
+        <div>
+            <img src="" alt="">
+        </div>
+      <div style="padding-left: 32px;">
+          <img style="height: 20px; vertical-align:middle;" src="assets/icon/palette.svg" alt="">
+                  <b>
+                      <span style="font-size: 20px !important; vertical-align:middle; color: #C0392B;" >Question palette</span>
+                  </b>
+      </div>
+      <div class="palette">
+          
+      </div>
+      <div class="palette-description">
+            <div class="answered">
+                <div class="answered-question"></div> Answered
+            </div>
+        
+            <div class="unanswered">
+                <div class="unanswered-question"></div> Unanswered
+            </div>
+      </div>
+  </div>
+
+    <!-- CONTENT -->
+     <section id="content">
+
+         <!-- LEFT CONTENT -->
+        <section id="left-content" class="left-content">
+            <div class="left-content-container">
+                    <div id="part1">
+                        <p class="passage-title">reading passage 1</p>
+                        <p class="passage-description">You should spend about 20 minutes on <b>Questions 1-13</b>, which are based on Reading Passage 1 below.</p>
+                        
+                        <br>
+                        <div class="passage" style="line-height: 1.8;">
+                                
+                                <img src="assets/img/reading/ps1.png" alt="" style="float: left; width: 100%; margin: 0 16px 0 0;">
+                                <p  style="font-size: 28px; text-transform: capitalize; font-weight: 700; text-align: center;">Henry Moore (1898-1986)</p>
+                                <p style="font-weight: 600; text-align: center;"> <i>The British sculptor Henry Moore was a leading figure
+                                    in the 20th-century art world</i> 
+                                   </p>
+
+                                <br>
+                                Henry Moore was born in Castleford, a small town near Leeds in the north of England. He was the seventh child of Raymond Moore and his wife Mary Baker. He studied at Castleford Grammar School from 1909 to 1915, where his early interest in art was encouraged by his teacher Alice Gostick. After leaving school, Moore hoped to become a sculptor, but instead he complied with his father’s wish that he train as a schoolteacher. He had to abandon his training in 1917 when he was sent to France to fight in the First World War.
+
+                                <br><br>
+                                After the war, Moore enrolled at the Leeds School of Art, where he studied for two years. In his first year, he spent most of his time drawing. Although he wanted to study sculpture, no teacher was appointed until his second year. At the end of that year, he passed the sculpture examination and was awarded a scholarship to the Royal College of Art in London. In September 1921, he moved to London and began three years of advanced study in sculpture.
+                                <br><br>
+                                Alongside the instruction he received at the Royal College, Moore visited many of the London museums, particularly the British Museum, which had a wide-ranging collection of ancient sculpture. During these visits, he discovered the power and beauty of ancient Egyptian and African sculpture. As he became increasingly interested in these ‘primitive’ forms of art, he turned away from European sculptural traditions.
+
+                                <br><br>
+                                After graduating, Moore spent the first six months of 1925 travelling in France. When he visited the Trocadero Museum in Paris, he was impressed by a cast of a Mayan* sculpture of the rain spirit. It was a male reclining figure with its knees drawn up together, and its head at a right angle to its body. Moore became fascinated with this stone sculpture, which he thought had a power and originality that no other stone sculpture possessed. He himself started carving a variety of subjects in stone, including depiction of reclining women, mother-and-child groups, and masks.
+                                <br><br>
+                                Moore’s exceptional talent soon gained recognition, and in 1926 he started work as a sculpture instructor at the Royal College. In 1933, he became a member of a group of young artists called Unit One. The aim of the group was to convince the English public of the merits of the emerging international movement in modern art and architecture.
+
+                                <br><br>
+                                Around this time, Moore moved away from the human figure to experiment with abstract shapes. In 1931, he held an exhibition at the Leicester Galleries in London. His work was enthusiastically welcomed by fellow sculptors, but the reviews in the press were extremely negative and turned Moore into a notorious figure. There were calls for his resignation from the Royal College, and the following year, when his contract expired, he left to start a sculpture department at the Chelsea School of Art in London.
+
+                                <br><br>
+                                Throughout the 1930s, Moore did not show any inclination to please the British public. He became interested in the paintings of the Spanish artist Pablo Picasso, whose work inspired him to distort the human body in a radical way. At times, he seemed to abandon the human figure altogether. The pages of his sketchbooks from this period show his ideas for abstract sculptures that bore little resemblance to the human form.
+
+
+                                <br><br>
+                                In 1940, during the Second World War, Moore stopped teaching at the Chelsea School and moved to a farmhouse about 20 miles north of London. A shortage of materials forced him to focus on drawing. He did numerous small sketches of Londoners, later turning these ideas into large coloured drawings in his studio. In 1942, he returned to Castleford to make a series of sketches of the miners who worked there.
+
+                                
+                                <br><br>
+                                In 1944, Harlow, a town near London, offered Moore a commission for a sculpture depicting a family. The resulting work signifies a dramatic change in Moore’s style, away from the experimentation of the 1930s towards a more natural and humanistic subject matter. He did dozens of studies in clay for the sculpture, and these were cast in bronze and issued in editions of seven to nine copies each. In this way, Moore’s work became available to collectors all over the world. The boost to his income enabled him to take on ambitious projects and start working on the scale he felt his sculpture demanded.
+                                
+                                <br><br>
+                                Critics who had begun to think that Moore had become less revolutionary were proven wrong by the appearance, in 1950, of the first of Moore’s series of standing figures in bronze, with their harsh and angular pierced forms and distinct impression of menace. Moore also varied his subject matter in the 1950s with such works as Warrior with Shield and Falling Warrior. These were rare examples of Moore’s use of the male figure and owe something to his visit to Greece in 1951, when he had the opportunity to study ancient works of art.
+                                <br><br>
+                                In his final years, Moore created the Henry Moore Foundation to promote art appreciation and to display his work. Moore was the first modern English sculptor to achieve international critical acclaim and he is still regarded as one of the most important sculptors of the 20th century.
+
+
+                        </div>
+                    </div>
+                    <hr style="margin: 21px 0; border: none;">
+                    <div id="part2">
+                        <p class="passage-title">reading passage 2 </p>
+                        <p class="passage-description">You should spend about 20 minutes on <b>Questions 14-26</b>, which are based on Reading Passage 2 
+                            below.
+                        </p>
+                        
+                        <br>
+                        <div class="passage" style="line-height: 1.8;">
+                                <img src="assets/img/reading/ps2.png" alt="" style="float: left; width: 100%; margin: 0 16px 0 0;">
+
+                                <p  style="font-size: 28px; text-transform: capitalize; font-weight: 700; text-align: center;">Are Artists Liars?</p>
+                                <br>
+                                <span class="number">A</span> Shortly before his death, Marlon Brando was working on a series of instructional videos about acting, to he called “Lying for a Iiving”. On the surviving footage, Brando can he seen dispensing gnomic advice on his craft to a group of enthusiastic, if somewhat bemused, Hollywood stars, including Leonardo Di Caprio and Sean Penn. Brando also recruited random people from the Los Angeles street and persuaded them to improvise (the footage is said to include a memorable scene featuring two dwarves and a giant Samoan). “If you can lie, you can act.” Brando told Jod Kaftan, a writer for Rolling Stone and one of the few people to have viewed the footage. “Are you good at lying?” asked Kaftan. “Jesus.” said Brando, “I’m fabulous at it”.
+
+
+                                <br><br>
+                                <span class="number">B</span> Brando was not the first person to note that the line between an artist and a liar is a line one. If art is a kind of lying, then lying is a form of art, albeit of a lower order-as Oscar Wilde and Mark Twain have observed. Indeed, lying and artistic storytelling spring from a common neurological root-one that is exposed in the cases of psychiatric patients who suffer from a particular kind of impairment. Both liars and artists refuse to accept the tyranny of reality. Both carefully craft stories that are worthy of belief – a skill requiring intellectual sophistication, emotional sensitivity and physical self-control (liars are writers and performers of their own work). Such parallels are hardly coincidental, as I discovered while researching my book on lying.
+
+                                <br><br>
+                                <span class="number">C</span> A case study published in 1985 by Antonio Damasio, a neurologist, tells the story of a middle-aged woman with brain damage caused by a series of strokes. She retained cognitive abilities, including coherent speech, but what she actually said was rather unpredictable. Checking her knowledge of contemporary events, Damasio asked her about the Falklands War. In the language of psychiatry, this woman was “confabulating”. Chronic confabulation is a rare type of memory problem that affects a small proportion of brain damaged people. In the literature it is defined as “the production of fabricated, distorted or misinterpreted memories about oneself or the world, without the conscious intention to deceive”. Whereas amnesiacs make errors of omission, there are gaps in their recollections they find impossible to fill – confabulators make errors of commission: they make tilings up. Rather than forgetting, they are inventing. Confabulating patients are nearly always oblivious to their own condition, and will earnestly give absurdly implausible explanations of why they’re in hospital, or talking to a doctor. One patient, asked about his surgical sear, explained that during the Second World War he surprised a teenage girl who shot him three times in the head, killing him, only for surgery to bring him back to life. The same patient, when asked about his family, described how at various times they had died in his arms, or had been killed before his eyes. Others tell yet more fantastical tales, about trips to the moon, fighting alongside Alexander in India or seeing Jesus on the Cross. Confabulators aren’t out to deceive. They engage in what Morris Moseovitch, a neuropsychologist, calls “honest lying”. Uncertain and obscurely distressed by their uncertainty, they are seized by a “compulsion to narrate”: a deep-seated need to shape, order and explain what they do not understand. Chronic confabulators are often highly inventive at the verbal level, jamming together words in nonsensical but suggestive ways: one patient, when asked what happened to Queen Marie Antoinette of France, answered that she had been “suicided” by her family. In a sense, these patients are like novelists, as described by Henry James: people on whom “nothing is wasted”. Unlike writers, however, they have little or no control over their own material.
+
+
+                                <br><br>
+                                <span class="number">D</span> The wider significance of this condition is what it tells us about ourselves. Evidently, there is a gushing river of verbal creativity in the normal human mind, from which both artistic invention and lying are drawn. We are born storytellers, spinning, narrative out of our experience and imagination, straining against the leash that keeps us tethered to reality. This is a wonderful thing; it is what gives us out ability to conceive of alternative futures and different worlds. And it helps us to understand our own lives through the entertaining stories of others. But it can lead us into trouble, particularly when we try to persuade others that our inventions are real. Most of the time, as our stories bubble up to consciousness, we exercise our cerebral censors, controlling which stories we tell, and to whom. Yet people lie for all sorts of reasons, including the fact that confabulating can be dangerously fun.
+
+
+                                <br><br>
+                                <span class="number">E</span> During a now-famous libel case in 1996, Jonathan Aitken, a former cabinet minister, recounted a tale to illustrate the horrors he endured after a national newspaper tainted his name. The case, which stretched on for more than two years, involved a series of claims made by the Guardian about Aitken’s relationships with Saudi arms dealers, including meetings he allegedly held with them on a trip to Paris while he was a government minister. Whitt amazed many in hindsight was the sheer superfluity of the lies Aitken told during his testimony. Aitken’s case collapsed in June 1997, when the defence finally found indisputable evidence about his Paris trip. Until then, Aitken’s charm, fluency and flair for theatrical displays of sincerity looked as if they might bring him victory, they revealed that not only was Aitken’s daughter not with him that day (when he was indeed doorstepped), but also that the minister had simply got into his car and drove off, with no vehicle in pursuit.
+
+
+                                <br><br>
+                                <span class="number">F</span> Of course, unlike Aitken, actors, playwrights and novelists are not literally attempting to deceive us,  because the rules are laid out in advance: come to the theatre, or open this book, and we’ll lie to you. Perhaps this is why we fell it necessary to invent art in the first place: as a safe space into which our lies can be corralled, and channeled into something socially useful. Given the universal compulsion to tell stories, art is the best way to refine and enjoy the particularly outlandish or insight till ones. But that is not the whole story. The key way in which artistic “lies” differ from normal lies, and from the “honest lying” of chronic confabulators, is that they have a meaning and resonance beyond their creator. The liar lies on behalf of himself; the artist tell lies on behalf of everyone. If writers have a compulsion to narrate, they compel themselves to find insights about the human condition. Mario Vargas Llosa has written that novels “express a curious truth that can only he expressed in a furtive and veiled fashion, masquerading as what it is not.” Art is a lie whose secret ingredient is truth.
+
+                                
+                        </div>
+                    </div>
+                    <hr style="margin: 21px 0; border: none;">
+                    <div id="part3">
+                        <p class="passage-title">reading passage 3 </p>
+                        <p class="passage-description">You should spend about 20 minutes on <b>Questions 27-40</b>, which are based on Reading Passage 3 
+                            below.
+                        </p>
+                        
+                        <br>
+                        <div class="passage" style="line-height: 1.8;">
+                                <img src="assets/img/reading/ps3.png" alt="" style="float: left; width: 100%; margin: 0 16px 0 0;">
+
+                                <p  style="font-size: 28px; text-transform: capitalize; font-weight: 700; text-align: center;">Inside the mind of a fan</p>
+                                <p  style="font-weight: 600; text-align: center;"> How watching sport affects the brain</p>
+                               
+                                <br>
+                                <span class="number">A</span> At about the same time that the poet Homer invented the epic here, the ancient Greeks started a festival in which men competed in a single race, about 200 metres long. The winner received a branch of wild olives. The Greeks called this celebration the Olympics. Through the ancient sprint remains, today the Olympics are far more than that. Indeed, the Games seem to celebrate the dream of progress as embodied in the human form. That the Games are intoxicating to watch is beyond question. During the Athens Olympics in 2004, 3.4 billion people, half the world, watched them on television. Certainly, being a spectator is a thrilling experience: but why?
+
+                                <br><br>
+                                <span class="number">B</span> In 1996, three Italian neuroscientists, Giacomo Rizzolatti, Leonardo Forgassi and Vittorio Gallese, examined the premotor cortex of monkeys. The discovered that inside these primate brains there were groups of cells that ‘store vocabularies of motor actions’. Just as there are grammars of movement. These networks of cells are the bodily ‘sentences’ we use every day, the ones our brain has chosen to retain and refine. Think, for example, about a golf swing. To those who have only watched the Master’s Tournament on TV, golfing seems easy. To the novice, however, the skill of casting a smooth arc with a lop-side metal stick is virtually impossible. This is because most novices swing with their consciousness, using an area of brain next to the premotor cortex. To the expert, on the other hand, a perfectly balanced stroke is second nature. For him, the motor action has become memorized, and the movements are embedded in the neurons of his premotor cortex. He hits the ball with the tranquility of his perfected autopilot.
+
+
+                                <br><br>
+                                <span class="number">C</span> These neurons in the premotor cortex, besides explaining why certain athletes seem to possess almost unbelievable levels of skill, have an even more amazing characteristic, one that caused Rizzolatti, Fogassi and Gallese to give them the lofty title ‘mirror neurons’. They note, The main functional characteristic of mirror neurons is that they become active both when the monkey performs a particular action (for example, grasping an object or holding it) and, astonishingly, when it sees another individual performing a similar action.’ Humans have an even more elaborate mirror neuron system. These peculiar cells mirror, inside the brain, the outside world: they enable us to internalize the actions of another. In order to be activated, though, these cells require what the scientists call ‘goal-orientated movements’. If we are staring at a photograph, a fixed image of a runner mid-stride, our mirror neurons are totally silent. They only fire when the runner is active: running, moving or sprinting.
+
+
+
+                                <br><br>
+                                <span class="number">D</span> What these electrophysiological studies indicate is that when we watch a golfer or a runner in action, the mirror neurons in our own premotor cortex light up as if we were the ones competing. This phenomenon of neural mirror was first discovered in 1954, when two French physiologists, Gastaut and Berf, found that the brains of humans vibrate with two distinct wavelengths, alpha and mu. The mu system is involved in neural mirroring. It is active when your bodies are still, and disappears whenever we do something active, like playing a sport or changing the TV channel. The surprising fact is that the mu signal is also quiet when we watch someone else being active, as on TV, these results are the effect of mirror neurons.
+
+                                <br><br>
+                                <span class="number">E</span> Rizzolatti, Fogassi and Gallese call the idea for mirror neurons the ‘direct matching hypothesis’. They believe that we only understand the movement of sports stars when we ‘map the visual representation of the observed action onto our motor representation of the same action’. According to this theory, watching an Olympic athlete ‘causes the motor system of the observer to resonate. The “motor knowledge” of the observer is used to understand the observed action.’ But mirror neurons are more than just the neural basis for our attitude to sport. It turns out that watching a great golfer makes us better golfers, and watching a great sprinter actually makes us run faster. This ability to learn by watching is a crucial skill. From the acquisition of language as infants to learning facial expressions, mimesis (copying) is an essential part of being conscious. The best athletes are those with a premotor cortex capable of imagining the movements of victory, together with the physical properties to make those movements real.
+
+
+                                <br><br>
+                                <span class="number">F</span> But how many of us regularly watch sports in order to be a better athlete? Rather, we watch sport for the feeling, the human drama. This feeling also derives from mirror neurons. By letting spectators share in the motions of victory, they also allow us to share in its feelings. This is because they are directly connected to the amygdale, one of the main brain regions involved in emotion. During the Olympics, the mirror neurons of whole nations will be electrically identical, their athletes causing spectators to feel, just for a second or two, the same thing. Watching sports brings people together. Most of us will never run a mile in under four minutes, or hit a home run. Our consolation comes in watching, when we gather around the TV, we all feel, just for a moment, what it is to do something perfectly.
+
+                               
+                        </div>
+                    </div>
+                    
+            </div>
+        </section>
+        <!-- RIGHT CONTENT  -->
+        <section id="right-content" class="right-content">
+            <div class="right-content-container">
+
+                <!-- Question 1-7 TRUE FALSE -->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 1-7 </b> <br>
+                        <i>
+                            Do the following statements agree with the information given in Reading Passage 1 <br>
+                            In boxes <b>1-7</b>  on your answer sheet, choose:
+                        </i>
+                    </p>
+                        <div style="border-radius: 4px; border: solid 1px #ccc; margin-bottom: 16px; cursor: context-menu;">
+                            <table class="table">
+                                <tr class="odd">
+                                    <td>
+                                        <b>TRUE</b> 
+                                    </td>
+                                    <td>
+                                        if the statement agrees with the information
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td>
+                                       <b>FALSE</b> 
+                                    </td>
+                                    <td>
+                                        if the statement contradicts the information
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>
+                                       <b>NOT GIVEN</b> 
+                                    </td>
+                                    <td>
+                                        if there is no information on this
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question8">
+                            <span class="number">1</span> 
+                                <select id="question1" class="select" form="sheetdb-form" name="data[1]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                On leaving school, Moore did what his father wanted him to do.
+
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question2">
+                            <span class="number">2</span> 
+                                <select id="question2" class="select" form="sheetdb-form" name="data[2]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Moore began studying sculpture in his first term at the Leeds School of Art.
+
+                        </label> 
+                    </div>
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question3">
+                            <span class="number">3</span> 
+                                <select id="question3" class="select" form="sheetdb-form" name="data[3]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                When Moore started at the Royal College of Art, its reputation for teaching sculpture was excellent.
+
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question4">
+                            <span class="number">4</span> 
+                                <select id="question4" class="select" form="sheetdb-form" name="data[4]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Moore became aware of ancient sculpture as a result of visiting London Museums.
+
+                        </label> 
+                    </div>
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question5">
+                            <span class="number">5</span> 
+                                <select id="question5" class="select" form="sheetdb-form" name="data[5]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                The Trocadero Museum’s Mayan sculpture attracted a lot of public interest.
+
+                        </label> 
+                    </div>
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question6">
+                            <span class="number">6</span> 
+                                <select id="question6" class="select" form="sheetdb-form" name="data[6]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Moore thought the Mayan sculpture was similar in certain respects to other stone sculptures.
+                        </label> 
+                    </div>
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question7">
+                            <span class="number">7</span> 
+                                <select id="question7" class="select" form="sheetdb-form" name="data[7]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                The artists who belonged to Unit One wanted to make modern art and architecture more popular.
+
+                        </label> 
+                    </div>
+                </div>
+
+                 <!-- Question 8-13 FILLING-->
+                 <div  class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 8-13 </b> <br>
+                        <i>
+                            Complete the summary. <br>
+                            Choose <span class="question-highlight">ONE WORD ONLY</span> from the passage for each answer. <br>
+                            Write your answers in boxes <b>8-13</b>  on your answer sheet <br>
+                        </i>
+                       
+                    </p>
+                    <div class="paragraph-input-text" style="text-align: justify;"> 
+                        <p style="text-align: center; font-weight: 700;">
+                            Moore’s career as an artist
+
+                        </p>
+                       <b>1930s</b>  <br>
+
+                        ●   Moore’s exhibition at the Leicester Galleries is criticised by the press <br>
+                        ●   Moore is urged to offer his <label for="question8">
+                            <span class="number">8</span> 
+                            <input id="question8" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[8]"  >
+                        </label>  and leave the Royal College. <br>
+                       <b>1940s</b>  <br>
+                        ●   Moore turns to drawing because <label for="question9">
+                            <span class="number">9</span> 
+                            <input id="question9" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[9]"  >
+                        </label>  for sculpting are not readily available <br>
+                        ●   While visiting his hometown, Moore does some drawings of <label for="question10">
+                            <span class="number">10</span> 
+                            <input id="question10" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[10]"  >
+                        </label> <br>
+                        ●   Moore is employed to produce a sculpture of a <label for="question11">
+                            <span class="number">11</span> 
+                            <input id="question11" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[11]"  >
+                        </label> <br>
+                        ●   <label for="question12">
+                            <span class="number">12</span> 
+                            <input id="question12" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[12]"  >
+                        </label>  start to buy Moore’s work <br>
+                        ●   Moore’s increased <label for="question13">
+                            <span class="number">13</span> 
+                            <input id="question13" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[13]"  >
+                        </label>  makes it possible for him to do more ambitious  sculptures <br>
+                       <b>1950s</b>  <br>
+                        ●   Moore’s series of bronze figures marks a further change in his style.
+                    </div>
+                </div>
+
+                <!-- Question 14-19 FILLING-->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 14-19 </b> <br>
+                        <i>
+                            Reading Passage 2 has six paragraphs, <span class="question-highlight">A-F</span>. <br>
+                            Choose the correct heading for each paragraph from the list of headings below. <br>
+                            Write the correct number, <b>i-viii</b> , in boxes <b>14-19</b>  on your answer sheet. <br>
+                        </i>
+                       
+                    </p>
+
+                    <div class="question">
+                        <p>Which <b>THREE</b>  of the following statements are true of Johnson's Dictionary?</p>
+                        <p style="margin-left: 16px;"> 
+                           <b>i</b> Unsuccessful deceit <br>
+                           <b>ii</b> Biological basis between liars and artists                           <br>
+                           <b>iii</b> How to lie in an artistic way  <br>
+                           <b>iv</b> Confabulations and the exemplifiers  <br>
+                           <b>v</b> The distinction between artists and common liars  <br>
+                           <b>vi</b> The fine line between liars and artists  <br>
+                           <b>vii</b> The definition of confabulation <br>
+                           <b>viii</b> Creativity when people lie <br>
+                        </p>
+                    </div>
+                    <div class="question">
+                        <label for="question1" style="margin-left: 8px;">
+                            <span class="number">14</span> Paragraph <b>A</b> 
+                            <input id="question14" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[14]"  >
+                        </label> <br>
+                    </div>
+                    <div class="question">
+                        <label for="question15" style="margin-left: 8px;">
+                            <span class="number">15</span>  Paragraph <b>B</b> 
+                            <input id="question15" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[15]"  >
+                        </label> 
+                    </div>
+                    <div class="question">
+                        <label for="question16" style="margin-left: 8px;">
+                            <span class="number">16</span>  Paragraph <b>C</b> 
+                            <input id="question16" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[16]"  >
+                        </label> 
+                    </div>
+                    <div class="question">
+                        <label for="question17" style="margin-left: 8px;">
+                            <span class="number">17</span> Paragraph <b>D</b> 
+                            <input id="question17" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[17]"  >
+                        </label> <br>
+                    </div>
+                    <div class="question">
+                        <label for="question18" style="margin-left: 8px;">
+                            <span class="number">18</span>  Paragraph <b>E</b> 
+                            <input id="question18" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[18]"  >
+                        </label> 
+                    </div>
+                    <div class="question">
+                        <label for="question19" style="margin-left: 8px;">
+                            <span class="number">19</span>  Paragraph <b>F</b> 
+                            <input id="question19" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[19]"  >
+                        </label> 
+                    </div>
+                </div>
+
+                <!-- Question 20-21 FILLING-->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 20-21 </b> <br>
+                        <i>
+                            Choose <span class="question-highlight">TWO</span> letters <span class="question-highlight">A-E</span>. <br>
+                            Write your answers in boxes <b>20-21</b>  on your answer sheet <br>
+                            <b>NB</b> Your answers may be given in any order.
+                        </i>
+                       
+                    </p>
+
+                    <div class="question">
+                        <p>Which <b>TWO </b> of the following statements about people suffering from confabulation are true?
+                        </p>
+                        <p style="margin-left: 16px;"> 
+                           <b>A</b> They have lost cognitive abilities. <br>
+                           <b>B</b> They do not deliberately tell a lie. <br>
+                           <b>C</b> They are normally aware of their condition.  <br>
+                           <b>D</b> They do not have the impetus to explain what they do not understand.  <br>
+                           <b>E</b> They try to make up stories.  <br>
+                        </p>
+                    </div>
+                    <div>
+                        <label for="question20" style="margin-left: 16px;">
+                            <span class="number">20</span> 
+                            <input id="question20" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[20]"  >
+                        </label> 
+                        <label for="question21" style="margin-left: 8px;">
+                            <span class="number">21</span> 
+                            <input id="question21" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[21]"  >
+                        </label> 
+                    </div>
+
+                            
+                </div>
+
+                <!-- Question 22-23 FILLING-->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 22-23 </b> <br>
+                        <i>
+                            Choose <span class="question-highlight">TWO</span> letters <span class="question-highlight">A-E</span>. <br>
+                            Write your answers in boxes <b>22-23</b>  on your answer sheet <br>
+                            <b>NB</b> Your answers may be given in any order.
+                        </i>
+                       
+                    </p>
+
+                    <div class="question">
+                        <p>Which <b>TWO </b>  of the following statements about playwrights and novelists are true?
+                        </p>
+                        <p style="margin-left: 16px;"> 
+                           <b>A</b> They give more meaning to the stories. <br>
+                           <b>B</b> They tell lies for the benefit of themselves. <br>
+                           <b>C</b> They have nothing to do with the truth out there.  <br>
+                           <b>D</b> We can be misled by them if not careful.  <br>
+                           <b>E</b> We know there are lies in the content.  <br>
+                        </p>
+                    </div>
+                    <div>
+                        <label for="question22" style="margin-left: 16px;">
+                            <span class="number">22</span> 
+                            <input id="question22" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[22]"  >
+                        </label> 
+                        <label for="question23" style="margin-left: 8px;">
+                            <span class="number">23</span> 
+                            <input id="question23" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[23]"  >
+                        </label> 
+                    </div>
+
+                            
+                </div>
+                
+                 <!-- Question 24-26 FILLING PASSAGE-->
+                 <div  class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 24-26 </b> <br>
+                        <i>
+                            Complete the summary below. <br>
+                            Choose <span class="question-highlight">NO MORE THAN TWO WORDS </span> from the passage for each answer. <br>
+                            Write your answers in boxes <b>24-26</b>  on your answer sheet <br>
+                        </i>
+                       
+                    </p>
+                    <div class="paragraph-input-text" style="text-align: justify;"> 
+                        A <label for="question24">
+                            <span class="number">24</span> 
+                            <input id="question24" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[24]"  >
+                        </label>
+                        accused Jonathan Aitken, a former cabinet minister, who was selling and buying with 
+                        <label for="question25">
+                            <span class="number">25</span> 
+                            <input id="question25" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[25]"  >
+                        </label>
+                        Aitken’s case collapsed in June 1997, when the defence finally found indisputable evidence about his Paris trip. He was deemed to have his 
+                        <label for="question26">
+                            <span class="number">26</span> 
+                            <input id="question26" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[26]"  >
+                        </label>
+                        They revealed that not only was Aitken’s daughter not with him that day, but also that the minister had simply got into his car and drove off, with no vehicle in pursuit.
+                
+                    </div>
+                </div>
+                
+                 <!-- Question 27-32 FILLING-->
+                 <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 27-32 </b> <br>
+                        Reading Passage 3 has six paragraphs, <span class="question-highlight">A-F</span>.<br>
+                        Which paragraph contains the following information?<br>
+                        <i>
+                            Write the correct letter <b>A-F</b>  in boxes <b>27-32</b>  on your answer sheet. <br>
+                            <b>NB</b> Your answers may be given in any order.
+                        </i>
+                    </p>
+                    
+                    <div class="question">
+                        <label for="question27" >
+                            <span class="number">27</span> 
+                            <input id="question27" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[27]"  >
+                            an explanation of why watching sport may be emotionally satisfying
+                        </label> 
+                    </div>
+                    <div class="question">
+                        <label for="question28" >
+                            <span class="number">28</span> 
+                            <input id="question28" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[28]"  >
+                            an explanation of why beginners find sporting tasks difficult    
+                        </label> 
+                    </div>
+                    <div class="question">
+                        <label for="question29" >
+                            <span class="number">29</span> 
+                            <input id="question29" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[29]"  >
+                            a factor that needs to combine with mirroring to attain sporting excellence
+                        </label> 
+                    </div><div class="question">
+                        <label for="question30" >
+                            <span class="number">30</span> 
+                            <input id="question30" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[30]"  >
+                            a comparison of human and animal mirror neurons
+
+                        </label> 
+                    </div><div class="question">
+                        <label for="question31" >
+                            <span class="number">31</span> 
+                            <input id="question31" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[31]"  >
+                            the first discovery of brain activity related to mirror neurons
+
+                        </label> 
+                    </div><div class="question">
+                        <label for="question32" >
+                            <span class="number">32</span> 
+                            <input id="question32" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[32]"  >
+                            a claim linking observation to improvement in performance
+
+                        </label> 
+                    </div>
+
+                            
+                </div>
+
+                 <!-- Question 33-35 ABCD-->
+                 <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 33-35 </b> <br>
+                        <i>
+                            Choose the correct answer.   <br>
+                            Write your answers in boxes <b>33-35</b>  on your answer sheet.
+                        </i>
+                    </p>
+
+                    <div class="question" id="question33">
+                        <span class="number">33</span> 
+                        <p class="question-multi">The writer uses the term ‘grammar of movement’ to mean</p>
+                    
+                        <div style="margin-top: 8px;"> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[33]" value="A"> 
+                                a level of sporting skill.
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[33]" value="B"> 
+                                a system of words about movement.
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[33]" value="C"> 
+                                a pattern of connected cells.
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[33]" value="D"> 
+                                a type of golf swing.
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                       
+                    </div>
+
+                    <div class="question" id="question34">
+                        <span class="number">34</span> 
+                        <p class="question-multi">The writer states that expert players perform their actions</p>
+                        <div style="margin-top: 8px;"> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[34]" value="A"> 
+                                without conscious thought.
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[34]" value="B"> 
+                                by planning each phase of movement.
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[34]" value="C"> 
+                                without regular practice.
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[34]" value="D"> 
+                                by thinking about the actions of others.
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                        
+                    </div>
+
+                    <div class="question" id="question35">
+                        <span class="number">35</span> 
+                        <p class="question-multi">The writer states that the most common motive for watching sport is to</p>
+                        <div style="margin-top: 8px;"> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[35]" value="A"> 
+                                improve personal performance.
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[35]" value="B"> 
+                                feel linked with people of different nationalities.
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[35]" value="C"> 
+                                experience strong positive emotions.
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[35]" value="D"> 
+                                realize what skill consists of.
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                        
+                    </div>
+                    
+                    
+
+                            
+                </div>
+
+                <!-- Question 36-40 YES NO NOT GIVEN -->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 36-40 </b> <br>
+                        <i>
+                            Do the following statements agree with the information given in Reading Passage 3 <br>
+                            In boxes <b>36-40</b>  on your answer sheet, choose:
+                        </i>
+                    </p>
+                        <div style="border-radius: 4px; border: solid 1px #ccc; margin-bottom: 16px; cursor: context-menu;">
+                            <table class="table">
+                                <tr class="odd">
+                                    <td>
+                                        <b>YES</b> 
+                                    </td>
+                                    <td>
+                                        if the statement agrees with the writer's claims
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td>
+                                       <b>NO</b> 
+                                    </td>
+                                    <td>
+                                        if the statement contradicts the writer's claims
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>
+                                       <b>NOT GIVEN</b> 
+                                    </td>
+                                    <td>
+                                        if it is impossible to say what the writer thinks about this
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question36">
+                            <span class="number">36</span> 
+                                <select id="question36" class="select" form="sheetdb-form" name="data[36]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Inexpert sports players are too aware of what they are doing.
+
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question37">
+                            <span class="number">37</span> 
+                                <select id="question37" class="select" form="sheetdb-form" name="data[37]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Monkeys have a more complex mirror neuron system than humans.
+
+                        </label> 
+                    </div>
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question38">
+                            <span class="number">38</span> 
+                                <select id="question38" class="select" form="sheetdb-form" name="data[38]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Looking at a photograph can activate mirror neurons.
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question39">
+                            <span class="number">39</span> 
+                                <select id="question39" class="select" form="sheetdb-form" name="data[39]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Gastaut and Bert were both researchers and sports players.
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question40">
+                            <span class="number">40</span> 
+                                <select id="question40" class="select" form="sheetdb-form" name="data[40]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                The mu system is at rest when we are engaged in an activity.
+                        </label> 
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </section>
+      
+    <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="part-group-btn">
+                    <a href="#part1">
+                        <button class="button">
+                            Passage 1
+                        </button>
+                    </a>
+                    <a href="#part2">
+                        <button class="button">
+                            Passage 2
+                        </button>
+                    </a>
+                    <a href="#part3">
+                        <button class="button">
+                            Passage 3
+                        </button>
+                    </a>
+                   
+                   
+                   
+                </div>
+    
+                <div class="submit-group-btn">
+                    <button class="button" type="submit" form="sheetdb-form"> 
+                        <img class="icon" src="assets/icon/submit.svg" alt="">
+                        <span> Submit</span>
+                    </button>
+                    <button class="button" onclick="showlist()">
+                        <img class="icon" src="assets/icon/review.svg" alt="">
+                        <span>Question palette</span>
+                    </button>
+                </div>
+            </div>
+            
+        </footer>
+
+
+
+<script>
+     var countdown;
+
+     // SUMBIT ANSWER
+     var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+            
+            e.preventDefault();
+            // Submit time
+            $("#time").val(new Date()); 
+
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(document.getElementById("sheetdb-form")),
+            }).then(
+                response => response.json()
+            ).then((html) => {
+                // you can put any JS code here
+                 clearInterval(countdown);
+                 // Pause the audio and show completed noti
+                 document.getElementById('reading-scf').play();
+                document.getElementById("completed").className = "show"
+            });
+        });
+
+
+    // SMOOTH SCROLL 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+            
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+                });
+            });
+        }
+        );
+        
+        
+
+
+
+    // CHANGE PALETTE COLOR WHEN CHECKED
+    $("input[type=radio]").on('change', function () {
+            name = $(this).attr("name"); //name = data[1]
+            palleteItem = document.getElementById(name);
+            palleteItem.classList.add("change");
+            palleteItem.classList.remove("default");
+    });
+
+    $("input[type=input]").on('change', function () {
+            name = $(this).attr("name"); //name = data[1]
+            palleteItem = document.getElementById(name);
+            palleteItem.classList.add("change");
+            palleteItem.classList.remove("default");
+    });
+
+    $("select").on('change', function () {
+            name = $(this).attr("name"); //name = data[1]
+            palleteItem = document.getElementById(name);
+            palleteItem.classList.add("change");
+            palleteItem.classList.remove("default");
+    });
+
+    // AUTO CREATE PALETTE
+    function initPalleteItems() {
+            for(var i=1; i<=40; i++){
+                $(".palette").append(`
+                <div id="data[${i}]" class="grid-item default">
+                    <a href="#question${i}" >${i}</a>
+                </div>`
+                )
+            }
+        }
+    initPalleteItems(); 
+
+
+
+    // SHOW and HIDE LIST WHEN CLICK ON LIST BUTTON
+    function showlist() {
+        var x = document.getElementById("sidenav");
+        var isShow = x.getAttribute('data-is-show');
+            if (isShow == 0 ) {
+                x.setAttribute("data-is-show", "1");
+                // document.getElementById("sidenav").style.width = "372px";
+                document.getElementById("sidenav").style.marginRight = "0px";
+                document.getElementById("content").style.marginRight = "280px";
+            } else {
+                x.setAttribute("data-is-show", "0");
+                // document.getElementById("sidenav").style.width = "0";
+                document.getElementById("sidenav").style.marginRight = "-280px";
+                document.getElementById("content").style.marginRight = "-6px";
+            }
+         };
+
+
+    // START BAR
+    $("#confirm-start").on('click', function () {
+            $(this).parents("#confirm-start").fadeOut();
+        });
+
+            $("#timeout").on('click', function () {
+            $("#timeout").removeClass("hide").addClass("show");
+        });
+
+
+
+
+    // CHECK PASSWORD
+            // Get references to the elements you'll be working with
+            var input = document.getElementById("password");
+            var div = document.getElementById("HIDDENDIV");
+            var btn = document.getElementById("startbtn");
+
+            // Set up event handlers in JavaScript
+            startbtn.addEventListener("click", validate);
+
+            function validate(){
+            if (input.value == 'cBk6rKqU') { 
+                // No need to add a "show" class. Just remove the "hidden" class.
+                $(this).parents("#confirm-start").fadeOut();
+
+                // TIMER
+                var presentTimeEl = document.getElementById('timer');
+                    let timeArray = presentTimeEl.innerText.split(/[:]+/);
+                    var min = timeArray[0];
+                    var sec = timeArray[1];
+
+                    function startTimer() {
+                        sec--;
+                        if (sec < 10 && sec >= 0) { sec = "0" + sec };
+                        if (sec < 0) { sec = 59 };
+                        if (sec == 59) {
+                            min--;
+                        }
+                        if (min.toString().length == 1) {
+                            min = '0' + min;
+                        }
+                        console.log(min.length)
+                        presentTimeEl.innerText = min + ":" + sec;
+                        if (min < 0) {
+                            clearInterval(countdown);
+                            console.log('end')
+                            presentTimeEl.innerText = "Time out!";
+
+
+                            // Auto submit when timeout
+                            var form = document.getElementById('sheetdb-form');
+                                 // Submit time
+                                 $("#time").val(new Date()); 
+                                    fetch(form.action, {
+                                        method: "POST",
+                                        body: new FormData(document.getElementById("sheetdb-form")),
+                                    }).then(
+                                        response => response.json()
+                                    ).then((html) => {
+                                        // you can put any JS code here
+                                        // Pause the audio and show timeout noti
+                                        document.getElementById('reading-timeout').play();
+                                        document.getElementById("timeout").className = "show";
+                                       
+                                    });
+                            ;
+                        }
+                    }
+                    countdown = setInterval(startTimer, 1000);
+                    
+                  
+            } else {  
+                password.focus(); // <-- If you don't do this first, your select code won't work
+                password.setSelectionRange(0, password.value.length);   
+                alert('Invalid Password!'); 
+            }
+            };
+
+</script>
+
+</body>
+</html>
