@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <audio controls id="writing-timeout" style="display: none; z-index: 13;" >
+        <source src="assets/audio/writing-timeout.mp3" type="audio/mp3">
+    </audio>
+    <audio controls id="writing-scf" style="display: none; z-index: 13;" >
+        <source src="assets/audio/writing-scf.mp3" type="audio/mp3">
+    </audio>
+    <!-- TIMEOUT  NOTI-->
+    <div id="timeout" class="hide">
+        <div class="timeout-container">
+            <div class="timeout-description">
+                    <p style="font-size: 24px; font-weight: 700; text-align: center;">TIME OUT</p>
+                <br>
+                <p>Time has expired for this Writing Test, please click Continue to move on to the Listening Test </p>
+                <br>
+                <div class="timeout-btn" onclick="window.location.href = 'listening.html'" >
+                    Continue
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPLETED  NOTI-->
+    <div id="completed" class="hide" style="z-index: 13;">
+        <div class="timeout-container">
+            <div class="timeout-description">
+                    <p style="font-size: 24px; font-weight: 700; text-align: center;">SUCESSFULLY</p>
+                <br>
+                <p>Your answers have been submitted successfully, please click Continue to move on to the Listening Test</p>
+                <br>
+                <div class="timeout-btn" onclick="window.location.href = 'listening.html'">
+                    Continue
+                </div> 
+            </div>
+        </div>
+    </div>
+
+     
+
+
+    <form action="https://sheetdb.io/api/v1/g533yk2gudhb9" method="POST" id="sheetdb-form">
+        <input id="time" name="data[time]" type="hidden" form="sheetdb-form"  />
+    </form>
+    <!-- CONFIRM TO START NOTI-->
+    <div id="confirm-start">
+        <div class="confirm-start-container">
+            <div class="start-description">
+                <p style="font-size: 24px; font-weight: 700; text-align: center; color: #C0392B;">IELTS MOCK TEST TLA 2021</p>
+            <p style="font-size: 18px;"><b> Academic Writing</b> </p> <br>
+            <p style="text-align: justify;">
+                <b>Format:</b>  There are two Writing tasks and BOTH must be completed.
+                <br><br>
+                <b>Timing:</b>  60 minutes
+                <br><br>
+                <b>No. of questions:</b>  2
+                <br><br>
+                <b>Answering:</b>  Answers must be given on the answer sheet and must be written in full. Notes or bullet points are not acceptable as answers.
+                <br>
+            </p>
+            <br>
+            <p style="text-align: justify; color:#192A56 !important;">
+                <img class="icon" src="assets/icon/warning.svg" style="display: inline-block; line-height: 30px; height: 28px !important;">
+                <span style="color:#192A56 !important; vertical-align:middle;"> <b> The countdown timer will begin when you click on Start.</b>  </span> 
+            </p>
+            
+            </div>
+            <br>
+
+            
+            <div class="info-submit">
+                <!-- INPUT NAME -->
+                <div class="submit-start-grid">
+                    <label for="name">
+                        <p>ID</p> 
+                        <input autocomplete="new-password" type="text" form="sheetdb-form" name="data[name]" placeholder="Enter your ID" onkeypress="return event.keyCode != 13;">
+                    </label>
+                </div>
+                
+                <!-- INPUT KEY -->
+                <div class="submit-start-grid"> 
+                    <label for="key">
+                        <p>Key</p>
+                        <input id="password" type="password" placeholder="Enter a private key" onkeypress="return event.keyCode != 13;">
+                    </label>
+                
+                </div>
+                <!-- CHECK KEY AND START -->
+                <div>
+                    <label for="start">
+                        <p></p>
+                        <input id="startbtn" type="button" value="Start" class="start-btn">
+                    </label>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+  
+    <!-- HEADER -->
+        <header class="header">
+            <div class="header-container">
+                <div class="skill-name">
+                    WRITING
+                </div>
+                
+                <div class="timer">
+                    <img style="height: 20px; vertical-align:middle;" src="assets/icon/time.svg" alt="">
+                    <b>
+                        <span id="timer" style="font-size: 20px !important;">60:00</span>
+                    </b>
+                   
+                </div>
+                <div class="event-name">
+                    IELTS MOCK TEST
+                </div>
+            </div>
+        </header>
+
+
+
+    <!-- CONTENT -->
+     <section id="content">
+
+         <!-- LEFT CONTENT -->
+        <section id="left-content" class="left-content">
+            <div class="left-content-container">
+                <div id="part1">
+                    <p class="passage-title"> writing task 1</p>
+                    <p class="passage-description">Look at the chart below. You should write <b>at least 150 words.</b> </p>
+                    
+                    <br>
+                    <div class="passage">
+                            
+                        <p>The chart below shows how frequently people in the USA ate in fast food restaurants between 2003 and 2013.
+                            <br>
+                            Summarise the information by selecting and reporting the main features, and make comparisons where relevant.
+                            
+                        </p>
+                        <br>
+                        <div>
+                            <img src="assets/img/writing/task1.png" alt="" style="width: 100%; border: solid 1px #ccc;">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <hr style="margin: 21px 0; border: none;">
+
+                <div id="part2">
+                        <p class="passage-title"> writing task 2</p>
+                        <p class="passage-description">Write about the following topic:</b> </p>
+                        
+                        <br>
+                        <div class="passage">
+                            <p style="border-radius: 4px; border: solid 1px #ccc; font-weight: 700; line-height: 1.6; padding: 16px;">
+                                Some people prefer to provide help or support directly to the local community. Others prefer to give money to national or international charitable organizations. <br>
+                                Discuss both views and give your own opinion.
+
+                            </p>
+                            <br>
+                                <img src="assets/img/writing/task2.png" alt="" style="width: 100%; margin: 0 16px 0 0; border: solid 1px #ccc;"> <br>
+                                
+                                <p>
+                                    Give reasons for your answer and include any relevant examples from your own knowledge or 
+                                    experience. <br>
+                                    You should write <b>at least 250 words.</b> 
+                                </p>
+                            </div>
+                        <br>
+                        
+                </div>
+        </div>
+                    
+        </section>
+
+        <!-- RIGHT CONTENT  -->
+        <section id="right-content" class="right-content">
+            <div class="right-content-container">
+                <!-- TASK 1-->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Type your essay below for Task 1 (at least 150 words) </b> <br>
+                        <i style="color: #C0392B;">
+                            You have 20 minutes to complete Writing Task 1
+                        </i>
+                       
+                    </p>
+
+                        <label for="task1" >  
+                        <textarea id="task1" form="sheetdb-form" oninput="countWord1()" spellcheck="false" name="data[task1]" placeholder="Type your answer here..."></textarea>
+                        <p> Word Count:
+                            <span id="count1">0</span>
+                        </p>
+                    </label>        
+                </div>
+
+                 <!-- TASK 2-->
+                 <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Type your essay below for Task 2 (at least 250 words) </b> <br>
+                        <i style="color: #C0392B;">
+                            You have 40 minutes to complete Writing Task 2
+                        </i>
+                       
+                    </p>
+
+                        <label for="task2" >  
+                        <textarea id="task2" form="sheetdb-form" oninput="countWord2()" spellcheck="false" name="data[task2]" placeholder="Type your answer here..."></textarea>
+                        <p> Word Count:
+                            <span id="count2">0</span>
+                        </p>
+                    </label>        
+                </div>
+            </div>
+        </section>
+
+    </section>
+      
+    <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="part-group-btn">
+                    <a href="#part1">
+                        <button class="button">
+                            Task 1
+                        </button>
+                    </a>
+                    <a href="#part2">
+                        <button class="button">
+                            Task 2
+                        </button>
+                    </a>  
+                </div>
+    
+                <div class="submit-group-btn">
+                    <button class="button" type="submit" form="sheetdb-form"> 
+                        <img class="icon" src="assets/icon/submit.svg" alt="">
+                        <span> Submit</span>
+                    </button>
+                </div>
+            </div>
+            
+        </footer>
+
+
+
+<script>
+
+    var countdown;
+
+     // SUMBIT ANSWER ON BUTTON
+     var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+            
+            e.preventDefault();
+            // Submit time
+            $("#time").val(new Date()); 
+
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(document.getElementById("sheetdb-form")),
+            }).then(
+               
+                response => response.json()
+            ).then((html) => {
+                 // Play audio
+                clearInterval(countdown);
+                document.getElementById('writing-scf').play();
+                document.getElementById("completed").className = "show"
+            });
+        });
+
+
+    // SMOOTH SCROLL 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+            
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+                });
+            });
+        }
+        );
+        
+
+    // CHANGE PALETTE COLOR WHEN CHECKED
+        $("input[type=radio]").on('change', function () {
+                name = $(this).attr("name"); //name = data[1]
+                palleteItem = document.getElementById(name);
+                palleteItem.classList.add("change");
+                palleteItem.classList.remove("default");
+        });
+
+        $("input[type=input]").on('change', function () {
+                name = $(this).attr("name"); //name = data[1]
+                palleteItem = document.getElementById(name);
+                palleteItem.classList.add("change");
+                palleteItem.classList.remove("default");
+        });
+
+        $("select").on('change', function () {
+                name = $(this).attr("name"); //name = data[1]
+                palleteItem = document.getElementById(name);
+                palleteItem.classList.add("change");
+                palleteItem.classList.remove("default");
+        });
+
+    // AUTO CREATE PALETTE
+        function initPalleteItems() {
+                for(var i=1; i<=40; i++){
+                    $(".palette").append(`
+                    <div id="data[${i}]" class="grid-item default">
+                        <a href="#question${i}" >${i}</a>
+                    </div>`
+                    )
+                }
+            }
+        initPalleteItems(); 
+
+
+
+   
+    // START BAR
+        $("#confirm-start").on('click', function () {
+            $(this).parents("#confirm-start").fadeOut();
+        });
+            $("#timeout").on('click', function () {
+            $("#timeout").removeClass("hide").addClass("show");
+        });
+
+
+
+
+    // CHECK PASSWORD
+            // Get references to the elements you'll be working with
+            var input = document.getElementById("password");
+            var div = document.getElementById("HIDDENDIV");
+            var btn = document.getElementById("startbtn");
+
+            // Set up event handlers in JavaScript
+            startbtn.addEventListener("click", validate);
+
+            function validate(){
+            if (input.value == '') { 
+                // No need to add a "show" class. Just remove the "hidden" class.
+                $(this).parents("#confirm-start").fadeOut();
+
+                // TIMER
+                    var presentTimeEl = document.getElementById('timer');
+                    let timeArray = presentTimeEl.innerText.split(/[:]+/);
+                    var min = timeArray[0];
+                    var sec = timeArray[1];
+                    function startTimer() {
+                        sec--;
+                        if (sec < 10 && sec >= 0) { sec = "0" + sec };
+                        if (sec < 0) { sec = 59 };
+                        if (sec == 59) {
+                            min--;
+                        }
+                        if (min.toString().length == 1) {
+                            min = '0' + min;
+                        }
+                        console.log(min.length)
+                        presentTimeEl.innerText = min + ":" + sec;
+                        if (min < 0) {
+                            clearInterval(countdown);
+                            console.log('end')
+                            presentTimeEl.innerText = "Time out!";
+
+                            // AUTO SUBMIT
+                            var form = document.getElementById('sheetdb-form');
+                                 // Submit time
+                                    $("#time").val(new Date()); 
+                                    fetch(form.action, {
+                                        method: "POST",
+                                        body: new FormData(document.getElementById("sheetdb-form")),
+                                    }).then(
+                                        response => response.json()
+                                    ).then((html) => {
+                                        // Play audio
+                                        document.getElementById('writing-timeout').play();
+                                        document.getElementById("timeout").className = "show";
+                                    });
+                            ;
+                        }
+                    }
+                    countdown = setInterval(startTimer, 1000);
+                    
+                  
+            } else {  
+                password.focus(); // <-- If you don't do this first, your select code won't work
+                password.setSelectionRange(0, password.value.length);   
+                alert('Invalid Password! Please try again!'); 
+            }
+            };
+
+
+        // WORD COUNT TASK 1
+        function countWord1() {
+  
+        // Get the input text value
+        var words = document
+            .getElementById("task1").value;
+
+        // Initialize the word counter
+        var count = 0;
+
+        // Split the words on each
+        // space character 
+        var split = words.split(' ');
+
+        // Loop through the words and 
+        // increase the counter when 
+        // each split word is not empty
+        for (var i = 0; i < split.length; i++) {
+            if (split[i] != "") {
+                count += 1;
+            }
+        }
+
+        // Display it as output
+        document.getElementById("count1")
+            .innerHTML = count;
+        }
+
+        // WORD COUNT TASK 2
+        function countWord2() {
+  
+        // Get the input text value
+        var words = document
+            .getElementById("task2").value;
+
+        // Initialize the word counter
+        var count = 0;
+
+        // Split the words on each
+        // space character 
+        var split = words.split(' ');
+
+        // Loop through the words and 
+        // increase the counter when 
+        // each split word is not empty
+        for (var i = 0; i < split.length; i++) {
+            if (split[i] != "") {
+                count += 1;
+            }
+        }
+
+        // Display it as output
+        document.getElementById("count2")
+            .innerHTML = count;
+        }
+
+</script>
+
+</body>
+</html>
