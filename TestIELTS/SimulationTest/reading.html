@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <!-- TIMEOUT  NOTI-->
+    <div id="timeout" class="hide">
+        <div class="timeout-container">
+            <div class="timeout-description">
+                    <p style="font-size: 24px; font-weight: 700; text-align: center;">TIME OUT</p>
+                <br>
+                <p>Time has expired for this Reading Test, please go back the Room to get a link for the next test. </p>
+                <br>
+                <!-- <div class="timeout-btn" onclick="window.location.href = 'reading.html'" >
+                    Continue
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPLETED  NOTI-->
+    <div id="completed" class="hide" style="z-index: 13;">
+        <div class="timeout-container">
+            <div class="timeout-description">
+                    <p style="font-size: 24px; font-weight: 700; text-align: center;">SUCESSFULLY</p>
+                <br>
+                <p>Your answers have been submitted successfully, please go back the Room to get a link for the next test.</p>
+                <br>
+                <!-- <div class="timeout-btn" onclick="window.location.href = 'reading.html'">
+                    Continue
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+     
+
+
+    <form action="https://sheetdb.io/api/v1/ppbxk0xrvtayt" method="POST" id="sheetdb-form" >
+        <input id="time" name="data[time]" type="hidden" form="sheetdb-form"  />
+    </form>
+    <!-- CONFIRM TO START NOTI-->
+    <div id="confirm-start" >
+        <div class="confirm-start-container">
+            <div class="start-description">
+                <p style="font-size: 24px; font-weight: 700; text-align: center; color: #C0392B;">IELTS SIMULATION TEST</p>
+            <p style="font-size: 18px;"><b> Academic Reading</b> </p> <br>
+            <p style="text-align: justify;">
+                <b>Format:</b>  Three reading passages with a variety of questions using a number of task types.
+                <br><br>
+                <b>Timing:</b>  60 minutes
+                <br><br>
+                <b>No. of questions:</b>  40
+                <br><br>
+                <b>Answering:</b>  Test takers are required to transfer their answers to an answer sheet during the time allowed for the test. No extra time is allowed for transfer. 
+                Care should be taken when writing answers on the answer sheet as poor spelling and grammar are penalised.
+                <br>
+            </p>
+            <br>
+            <p style="text-align: justify; color:#192A56 !important;">
+                <img class="icon" src="assets/icon/warning.svg" style="display: inline-block; line-height: 30px; height: 28px !important;">
+                <span style="color:#192A56 !important; vertical-align:middle;"> <b> The countdown timer will begin when you click on Start.</b>  </span> 
+            </p>
+            
+            </div>
+            <br>
+
+            
+            <div class="info-submit">
+                <!-- INPUT NAME -->
+                <div class="submit-start-grid">
+                    <label for="name">
+                        <p>Name</p> 
+                        <input autocomplete="new-password" type="text" form="sheetdb-form" name="data[name]" placeholder="Enter your name" onkeypress="return event.keyCode != 13;">
+                    </label>
+                </div>
+                
+                <!-- INPUT KEY -->
+                <div class="submit-start-grid"> 
+                    <label for="key">
+                        <p>Password</p>
+                        <input id="password" type="password" placeholder="Enter a private key" onkeypress="return event.keyCode != 13;">
+                    </label>
+                
+                </div>
+                <!-- CHECK KEY AND START -->
+                <div>
+                    <label for="start">
+                        <p></p>
+                        <input id="startbtn" type="button" value="Start" class="start-btn">
+                    </label>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+  
+    <!-- HEADER -->
+        <header class="header">
+            <div class="header-container">
+                <div class="skill-name">
+                    READING
+                </div>
+                
+                <div class="timer">
+                    <img style="height: 20px; vertical-align:middle;" src="assets/icon/time.svg" alt="">
+                    <b>
+                        <span id="timer" style="font-size: 20px !important;">60:00</span>
+                    </b>
+                   
+                </div>
+                <div class="event-name">
+                    IELTS SIMULATION TEST
+                </div>
+            </div>
+        </header>
+
+     <!-- SIDENAV -->
+     <div id="sidenav" class="sidenav" data-is-show="0" >
+        <div>
+            <img src="" alt="">
+        </div>
+      <div style="padding-left: 32px;">
+          <img style="height: 20px; vertical-align:middle;" src="assets/icon/palette.svg" alt="">
+                  <b>
+                      <span style="font-size: 20px !important; vertical-align:middle; color: #C0392B;" >Question palette</span>
+                  </b>
+      </div>
+      <div class="palette">
+          
+      </div>
+      <div class="palette-description">
+            <div class="answered">
+                <div class="answered-question"></div> Answered
+            </div>
+        
+            <div class="unanswered">
+                <div class="unanswered-question"></div> Unanswered
+            </div>
+      </div>
+  </div>
+
+    <!-- CONTENT -->
+     <section id="content">
+
+         <!-- LEFT CONTENT -->
+        <section id="left-content" class="left-content">
+            <div class="left-content-container">
+                    <div id="part1">
+                        <p class="passage-title">reading passage 1</p>
+                        <p class="passage-description">You should spend about 20 minutes on <b>Questions 1-13</b>, which are based on Reading Passage 1 below.</p>
+                        
+                        <br>
+                        <div class="passage">
+                                
+                                <img src="assets/img/reading/ps1.png" alt="" style="float: left; width: 100%; margin: 0 16px 0 0;">
+                                <p  style="font-size: 28px; text-transform: capitalize; font-weight: 700; text-align: center;">Johnson's Dictionary </p>
+
+                                <br>
+                                For the century before Johnson's Dictionary 
+                                was published in | 775, there had been 
+                                concern about the state of the English 
+                                language. There was no standard way of 
+                                speaking or writing and no agreement as to 
+                                the best way of bringing some order to the 
+                                chaos of English spelling, Dr Johnson 
+                                provided the solution.
+                                <br><br>
+                                There had, of course, been dictionaries in the 
+                                past, the first of these being a little book of 
+                                some 120 pages, compiled by a certain 
+                                Robert Cawdray, published in 1604 under 
+                                the title A Table Alphabetical 'of hard usuall 
+                                English wordes’. Like the various 
+                                dictionaries that came after it during the 
+                                seventeenth century, Cawdray's tended to 
+                                concentrate on ‘scholarly’ words; one 
+                                function of the dictionary was to enable its 
+                                student to convey an impression of fine 
+                                learning.
+                                <br><br>
+                                Beyond the practical need to make order out 
+                                of chaos, the rise of dictionaries is associated 
+                                with the rise of the English middle class, who 
+                                were anxious to define and circumscribe the 
+                                various worlds to conquer — lexical as well 
+                                as social and commercial, It is highly 
+                                appropriate that Dr Samuel Johnson, the 
+                                very model of an eighteenth-century literary 
+                                man, as famous in his own time as in ours, 
+                                should have published his Dictionary at the 
+                                very beginning of the heyday of the middle 
+                                class.
+                                <br><br>
+                                Johnson was a poet and critic who raised 
+                                common sense to the heights of genius. His 
+                                approach to the problems that had worried 
+                                writers throughout the late seventeenth and 
+                                early eighteenth centuries was intensely 
+                                practical. Up until his time, the task of 
+                                producing a dictionary on such a large scale 
+                                had seemed impossible without the 
+                                establishment of an academy to make 
+                                decisions about right and wrong usage.
+                                Johnson decided he did not need an academy 
+                                to settle arguments about language; he 
+                                would write a dictionary himself; and he would do it single-handed. Johnson signed 
+                                the contract for the Dictionary with the 
+                                bookseller Robert Dosley at a breakfast held 
+                                at the Golden Anchor Inn near Holborn Bar 
+                                on 18 June 1764. He was to be paid £1,575 in 
+                                instalments, and from this he took money to
+                                rent 17 Gough Square, in which he set up his 
+                                ‘dictionary workshop’.
+                                <br><br>
+                                ames Boswell, his biographer, described the 
+                                garret where Johnson worked as ‘fitted up 
+                                like a counting house’ with a long desk 
+                                running down the middle at which the 
+                                copying clerks would work standing up. 
+                                Johnson himself was stationed on a rickety 
+                                chair at an ‘old crazy deal table’ surrounded 
+                                by a chaos of borrowed books. He was also 
+                                helped by six assistants, two of whom died 
+                                whilst the Dictionary was still in 
+                                preparation.
+                                <br><br>
+                                The work was immense; filling about eighty 
+                                large notebooks (and without a library to 
+                                hand), Johnson wrote the definitions of over 
+                                40,000 words, and illustrated their many 
+                                meanings with some 14.000 quotations 
+                                drawn from English writing on every 
+                                subject, from the Elizabethans to his own 
+                                time. He did not expect to achieve complete 
+                                originality. Working to a deadline, he had to 
+                                draw on the best of all previous dictionaries, 
+                                and to make his work one of heroic 
+                                synthesis. In fact, it was very much more. 
+                                Unlike his predecessors, Johnson treated 
+                                English very practically, as a living language, 
+                                with many different shades of meaning, He 
+                                adopted his definitions on the principle of 
+                                English common law — according to 
+                                precedent. After its publication, his 
+                                Dictionary was not seriously rivalled for 
+                                over a century,
+                                <br><br>
+                                After many vicissitudes the Dictionary was 
+                                finally published on 15 April 1775. It was 
+                                instantly recognised as a landmark 
+                                throughout Europe. ‘This very noble work; 
+                                wrote the leading Italian lexicographer ‘will 
+                                be a perpetual monument of Fame to the Author, an Honour to his own Country in 
+                                particular, and a general Benefit to the 
+                                republic of Letters throughout Europe.’ The 
+                                fact that Johnson had taken on the 
+                                Academies of Europe and matched them 
+                                (everyone knew that forty French academics 
+                                had taken forty years to produce the first 
+                                French national dictionary) was cause for 
+                                much English celebration.
+
+                                <br><br>
+                                Johnson had worked for nine years, ‘with 
+                                little assistance of the learned, and without 
+                                any patronage of the great; not in the soft 
+                                obscurities of retirement, or under the 
+                                shelter of academic bowers, but amidst 
+                                inconvenience and distraction, in sickness 
+                                and in sorrow’, For all its faults and eccentricities his two-volume work is a 
+                                masterpiece and a landmark, in his own 
+                                words, ‘setting the orthography, displaying 
+                                the analogy, regulating the structures, and 
+                                ascertaining the significations of English 
+                                words’, It is the cornerstone of Standard 
+                                English, an achievement which, in James 
+                                Boswell’s words, ‘conferred stability on the 
+                                language of his country’.
+                                
+                                <br><br>
+                                The Dictionary, together with his other 
+                                writing, made Johnson famous and so well 
+                                esteemed that his friends were able to 
+                                prevail upon King George Ill to offer him a 
+                                pension. From then on, he was to become the 
+                                Johnson of folklore.
+
+                        </div>
+                    </div>
+                    <hr style="margin: 21px 0; border: none;">
+                    <div id="part2">
+                        <p class="passage-title">reading passage 2 </p>
+                        <p class="passage-description">You should spend about 20 minutes on <b>Questions 14-26</b>, which are based on Reading Passage 2 
+                            below.
+                        </p>
+                        
+                        <br>
+                        <div class="passage">
+                                <img src="assets/img/reading/ps2.png" alt="" style="float: left; width: 100%; margin: 0 16px 0 0;">
+
+                                <p  style="font-size: 28px; text-transform: capitalize; font-weight: 700; text-align: center;">Nature or Nurture?</p>
+                                <br>
+                                <span class="number">A</span> A few years ago, in one of the most fascinating and disturbing experiments in behavioural 
+                                psychology, Stanley Milgram of Yale University tested 40 subjects from all walks of life for 
+                                their willingness to obey instructions given by a ‘leader’ in a situation in which the subjects 
+                                might feel a personal distaste for the actions they were called upon to perform. Specifically, 
+                                Milgram told each volunteer 'teacher-subject’ that the experiment was in the noble cause of 
+                                education, and was designed to test whether or not punishing pupils for their mistakes 
+                                would have 2 positive effect on the pupils’ ability to learn.
+
+                                <br><br>
+                                <span class="number">B</span> Milgram's experimental set-up involved placing the teacher-subject before a panel of thirty 
+                                switches with labels ranging from ‘15 volts of electricity (slight shock)’ to ‘450 volts (danger 
+                                — severe shock)’ in steps of 15 volts each. The teacher-subject was told that whenever the 
+                                pupil gave the wrong answer to a question, a shock was to be administered, beginning at the 
+                                lowest level and increasing in severity with each successive wrong answer. The supposed 
+                                ‘pupil’ was in reality an actor hired by Milgram to simulate receiving the shocks by emitting 
+                                a spectrum of groans, screams and writhings together with an assortment of statements and 
+                                expletives denouncing both the experiment and the experimenter. Milgram told the teacher-subject to ignore the reactions of the pupil, and to administer whatever level of shock was 
+                                called for, as per the rule governing the experimental situation of the moment.
+
+                                <br><br>
+                                <span class="number">C</span> As the experiment unfolded, the pupil would deliberately give the wrong answers to 
+                                questions posed by the teacher, thereby bringing on various electrical punishments, even up 
+                                to the danger level of 300 volts and beyond. Many of the teacher-subjects balked at 
+                                administering the higher levels of punishment, and turned to Milgram with questioning 
+                                looks and/or complaints about continuing the experiment. In these situations, Milgram 
+                                calmly explained that the teacher-subject was to ignore the pupil's cries for mercy and carry 
+                                on with the experiment. If the subject was still reluctant to proceed, Milgram said that it was 
+                                important for the sake of the experiment that the procedure be followed through to the end. 
+                                His final argument was, ‘You have no other choice. You must go on.' What Milgram was trying 
+                                to discover was the number of teacher-subjects who would be willing to administer the 
+                                highest levels of shock, even in the face of strong personal and moral revulsion against the 
+                                rules and conditions of the experiment.
+
+                                <br><br>
+                                <span class="number">D</span> Prior to carrying out the experiment, Milgram explained his idea to a group of 39 
+                                psychiatrists and asked them to predict the average percentage of people in an ordinary 
+                                population who would be willing to administer the highest shock level of 450 volts. The 
+                                overwhelming consensus was that virtually all the teacher-subjects would refuse to obey 
+                                the experimenter. The psychiatrists felt that ‘most subjects would not go beyond 150 volts’ 
+                                and they further anticipated that only four per cent would go up to 300 volts. Reading
+                                Furthermore, they thought that only a lunatic fringe of about one in 1,000 would give the 
+                                highest shock of 450 volts.
+
+                                <br><br>
+                                <span class="number">E</span> What were the actual results? Well, over 60 per cent of the teacher-subjects continued to 
+                                obey Milgram up to the 460-volt limit! In repetitions of the experiment in other countries, 
+                                the percentage of obedient teacher-subjects was even higher, reaching 85 per cent in one 
+                                country. How can we possibly account for this vast discrepancy between what calm, rational, 
+                                knowledgeable people predict in the comfort of their study and what pressured, flustered, 
+                                but cooperative ‘teachers’ actually do in the laboratory of real life?
+
+                                <br><br>
+                                <span class="number">F</span> One's first inclination might be to argue that there must be some sort of built-in animal 
+                                aggression instinct that was activated by the experiment, and that Milgram’s teacher - subjects were just following a genetic need to discharge this pent-up primal urge onto the 
+                                pupil by administering the electrical shock. A modern hard-core socio-biologist might even 
+                                go so far as to claim that this aggressive instinct evolved as an advantageous trait, having 
+                                been of survival value to our ancestors in their struggle against the hardships of life on the 
+                                plains and in the caves, ultimately finding its way into our genetic make-up as a remnant of 
+                                Our ancient animal ways.
+
+                                <br><br>
+                                <span class="number">G</span> An alternative to this notion of genetic programming is to see the teacher-subjects' actions 
+                                as a result of the social environment under which the experiment was carried out. As 
+                                Milgram himself pointed out, 'Most subjects in the experiment see their behaviour in a larger 
+                                context that is benevolent and useful to society - the pursuit of scientific truth. The 
+                                psychological laboratory has a strong claim to legitimacy and evokes trust and confidence 
+                                in those who perform there. An action such as shocking a victim, which in isolation appears 
+                                evil, acquires a completely different meaning when placed in this setting.’
+
+                                <br><br>
+                                <span class="number">H</span> Thus, in this explanation the subject merges his unique personality and personal and moral
+                                code with that of larger institutional structures, surrendering individual properties like 
+                                loyalty, self-sacrifice and discipline to the service of malevolent systems of authority.
+                                
+                                <br><br>
+                                <span class="number">I</span> Here we have two radically different explanations for why so many teacher-subjects were 
+                                willing to forgo their sense of personal responsibility for the sake of an institutional 
+                                authority figure. The problem for biologists, psychologists and anthropologists is to sort out 
+                                which of these two polar explanations is more plausible. This, in essence, is the problem of 
+                                modern sociobiology — to discover the degree to which hard-wired genetic programming 
+                                dictates, or at least strongly biases, the interaction of animals and humans with their 
+                                environment, that is, their behaviour. Put another way, sociobiology is concerned with 
+                                elucidating the biological basis of all behaviour.
+
+                        </div>
+                    </div>
+                    <hr style="margin: 21px 0; border: none;">
+                    <div id="part3">
+                        <p class="passage-title">reading passage 3 </p>
+                        <p class="passage-description">You should spend about 20 minutes on <b>Questions 27-40</b>, which are based on Reading Passage 3 
+                            below.
+                        </p>
+                        
+                        <br>
+                        <div class="passage">
+                                <img src="assets/img/reading/ps3.png" alt="" style="float: left; width: 100%; margin: 0 16px 0 0;">
+
+                                <p  style="font-size: 28px; text-transform: capitalize; font-weight: 700; text-align: center;">The Truth about the Environment</p>
+                                <br>
+                                For many environmentalists, the world seems to be getting worse. They have developed a hit-list of our main fears; that natural resources are running out; that the population is ever 
+                                growing, leaving less and less to eat; that species are becoming extinct in vast numbers, and 
+                                that the planet's air and water are becoming ever more polluted.
+
+                                <br><br>
+                                But a quick look at the facts shows a different picture. First, energy and other natural 
+                                resources have become more abundant, not less so, since the book ‘The Limits to Growth’ was 
+                                published in 1972 by a group of scientists. Second, more food is now produced per head of 
+                                the world’s population than at any time in history. Fewer people are starving. Third, although 
+                                species are indeed becoming extinct, only about 0.7% of them are expected to disappear in 
+                                the next 50 years, not 25-50%, as has so often been predicted. And finally, most forms of 
+                                environmental pollution either appear to have been exaggerated, or are transient —
+                                associated with the early phases of industrialisation and therefore best cured not by 
+                                restricting economic growth, but by accelerating it. One form of pollution — the release of 
+                                greenhouse gases that causes global warming — does appear to be a phenomenon that is 
+                                going to extend well into our future, but its total impact is unlikely to pose a devastating 
+                                problem. A bigger problem may well turn out to be an inappropriate response to it.
+
+
+                                <br><br>
+                                Yet opinion polls suggest that many people nurture the belief that environmental standards 
+                                are declining and four factors seem to cause this disjunction between perception and reality.
+
+
+                                <br><br>
+                                One is the lopsidedness built into scientific research. Scientific funding goes mainly to areas 
+                                with many problems. That may be wise policy, but it will also create an impression that many 
+                                more potential problems exist than is the case.
+
+                                <br><br>
+                                Secondly, environmental groups need to be noticed by the mass media. They also need to keep 
+                                the money rolling in. Understandably, perhaps, they sometimes overstate their arguments. In 
+                                1997, for example, the World Wide Fund for Nature issued a press release entitled: ‘Two 
+                                thirds of the world’s forests lost forever’. The truth turns out to be nearer 20%.
+
+
+                                <br><br>
+                                Though these groups are run overwhelmingly by selfless folk, they nevertheless share many 
+                                of the characteristics of other lobby groups. That would matter less if people applied the same 
+                                degree of scepticism to environmental lobbying as they do to lobby groups in other fields. A 
+                                trade organisation arguing for, say, weaker pollution controls is instantly seen as self-interested. Yet a green organisation opposing such a weakening is seen as altruistic, even if 
+                                an impartial view of the controls in question might suggest they are doing more harm than 
+                                good.
+
+                                <br><br>
+                                A third source of confusion is the attitude of the media. People are clearly more curious about 
+                                bad news than good. Newspapers and broadcasters are there to provide what the public 
+                                wants. That, however, can lead to significant distortions of perception. An example was 
+                                America’s encounter with El Nino in 1997 and 1998. This climatic phenomenon was accused 
+                                of wrecking tourism, causing allergies, melting the ski-slopes and causing 22 deaths. 
+                                However, according to an article in the Bulletin of the American Meteorological Society, the 
+                                damage it did was estimated at US$4 billion but the benefits amounted to some US$19 billion. 
+                                These came from higher winter temperatures (which saved an estimated 850 lives, reduced 
+                                heating costs and diminished spring floods caused by meltwaters).
+
+                                <br><br>
+                                The fourth factor is poor individual perception. People worry that the endless rise in the 
+                                amount of stuff everyone throws away will cause the world to run out of places to dispose of 
+                                waste, Yet, even if America’s trash output continues to rise as it has done in the past, and even 
+                                if the American population doubles by 2100, all the rubbish America produces through the 
+                                entire 21st century will still take up only one-12,000th of the area of the entire United States.
+                                
+                                <br><br>
+                                So what of global warming? As we know, carbon dioxide emissions are causing the planet to 
+                                warm. The best estimates are that the temperatures will rise by 2—3°C in this century, 
+                                causing considerable problems, at a total cost of US$5,000 billion.
+                                
+                                <br><br>
+                                Despite the intuition that something drastic needs to be done about such a costly problem, 
+                                economic analyses clearly show it will be far more expensive to cut carbon dioxide emissions 
+                                radically than to pay the costs of adaptation to the increased temperatures. A model by one of 
+                                the main authors of the United Nations Climate Change Panel shows how an expected 
+                                temperature increase of 2.1 degrees in 2100 would only be diminished to an increase of 1.9 
+                                degrees. Or to put it another way, the temperature increase that the planet would have 
+                                experienced in 2094 would be postponed to 2100.
+
+                                <br><br>
+                                So this does not prevent global warming, but merely buys the world six years. Yet the cost of 
+                                reducing carbon dioxide emissions, for the United States alone, will be higher than the cost of 
+                                solving the world’s single, most pressing health problem: providing universal access to clean 
+                                drinking water and sanitation. Such measures would avoid 2 million deaths every year, and 
+                                prevent half a billion people from becoming seriously ill.
+
+                                <br><br>
+                                It is crucial that we look at the facts if we want to make the best possible decisions for the 
+                                future. It may be costly to be overly optimistic — but more costly still to be too pessimistic.
+                        </div>
+                    </div>
+                    
+            </div>
+        </section>
+        <!-- RIGHT CONTENT  -->
+        <section id="right-content" class="right-content">
+            <div class="right-content-container">
+                <!-- Question 1-3 FILLING-->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 1-3 </b> <br>
+                        <i>
+                            Choose <span class="question-highlight">THREE</span> letters <span class="question-highlight">A-H</span>. <br>
+                            Write your answers in boxes <b>1-3</b>  on your answer sheet <br>
+                            <b>NB</b> Your answers may be given in any order.
+                        </i>
+                       
+                    </p>
+
+                    <div class="question">
+                        <p>Which <b>THREE</b>  of the following statements are true of Johnson's Dictionary?</p>
+                        <p style="margin-left: 16px;"> 
+                           <b>A</b> It avoided all scholarly words. <br>
+                           <b>B</b> It was the only English dictionary in general use for 200 years. <br>
+                           <b>C</b> It was famous because of the large number of people involved.  <br>
+                           <b>D</b> It focused mainly on language from contemporary texts.  <br>
+                           <b>E</b> There was a time limit for its completion.  <br>
+                           <b>F</b> It ignored work done by previous dictionary writers.  <br>
+                           <b>G</b> It took into account subtleties of meaning. <br>
+                           <b>H</b> Its definitions were famous for their originality. <br>
+                        </p>
+                    </div>
+                    <div>
+                        <label for="question1" style="margin-left: 16px;">
+                            <span class="number">1</span> 
+                            <input id="question1" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[1]"  >
+                        </label> 
+                        <label for="question2" style="margin-left: 8px;">
+                            <span class="number">2</span> 
+                            <input id="question2" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[2]"  >
+                        </label> 
+                        <label for="question3" style="margin-left: 8px;">
+                            <span class="number">3</span> 
+                            <input id="question3" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[3]"  >
+                        </label> 
+                    </div>
+
+                            
+                </div>
+
+                <!-- Question 4-7 FILLING-->
+                <div  class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 4-7 </b> <br>
+                        <i>
+                            Complete the summary. <br>
+                            Choose <span class="question-highlight">NO MORE THAN TWO WORDS</span> from the passage for each answer. <br>
+                            Write your answers in boxes <b>4-7</b>  on your answer sheet <br>
+                        </i>
+                       
+                    </p>
+                    <p class="paragraph-input-text"> 
+                        In 1764 Dr Johnson accepted the contract to produce a dictionary. Having rented a garret, he 
+                        took on a number of 
+                        <label for="question4">
+                            <span class="number">4</span> 
+                            <input id="question4" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[4]"  >
+                        </label> 
+                        , who stood at a long central desk. Johnson did not have a 
+                        <label for="question5">
+                            <span class="number">5</span> 
+                            <input id="question5" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[5]"  >
+                        </label> 
+                        available to him, but eventually produced definitions of in excess of 40,000 words 
+                        written down in &0 large notebooks. On publication, the Dictionary was immediately hailed in 
+                        many European countries as a landmark. According to his biographer, James Boswell, Johnson’s 
+                        principal achievement was to bring 
+                        <label for="question6">
+                            <span class="number">6</span> 
+                            <input id="question6" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[6]"  >
+                        </label> 
+                        to the English language. As a reward for his 
+                        hard work, he was granted a 
+                        <label for="question7">
+                            <span class="number">7</span> 
+                            <input id="question7" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[7]"  >
+                        </label> 
+                        by the king.
+                    </p>
+                </div>
+
+                 <!-- Question 8-13 TRUE FALSE -->
+                 <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 8-13 </b> <br>
+                        <i>
+                            Do the following statements agree with the information given in Reading Passage 1 <br>
+                            In boxes <b>8-13</b>  on your answer sheet, choose:
+                        </i>
+                    </p>
+                        <div style="border-radius: 4px; border: solid 1px #ccc; margin-bottom: 16px; cursor: context-menu;">
+                            <table class="table">
+                                <tr class="odd">
+                                    <td>
+                                        <b>TRUE</b> 
+                                    </td>
+                                    <td>
+                                        if the statement agrees with the information
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td>
+                                       <b>FALSE</b> 
+                                    </td>
+                                    <td>
+                                        if the statement contradicts the information
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>
+                                       <b>NOT GIVEN</b> 
+                                    </td>
+                                    <td>
+                                        if there is no information on this
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question8">
+                            <span class="number">8</span> 
+                                <select id="question8" class="select" form="sheetdb-form" name="data[8]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                            The growing importance of the middle classes led to an increased demand for dictionaries.
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question9">
+                            <span class="number">9</span> 
+                                <select id="question9" class="select" form="sheetdb-form" name="data[9]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Johnson has become more well known since his death.
+                        </label> 
+                    </div>
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question10">
+                            <span class="number">10</span> 
+                                <select id="question10" class="select" form="sheetdb-form" name="data[10]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Johnson had been planning to write a dictionary for several years.
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question11">
+                            <span class="number">11</span> 
+                                <select id="question11" class="select" form="sheetdb-form" name="data[11]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Johnson set up an academy to help with the writing of his Dictionary. 
+                        </label> 
+                    </div>
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question12">
+                            <span class="number">12</span> 
+                                <select id="question12" class="select" form="sheetdb-form" name="data[12]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Johnson only received payment for his Dictionary on its completion.
+                        </label> 
+                    </div>
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question13">
+                            <span class="number">13</span> 
+                                <select id="question13" class="select" form="sheetdb-form" name="data[13]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                            Not all of the assistants survived to see the publication of the Dictionary.
+                        </label> 
+                    </div>
+                </div>
+                
+                <!-- Question 14-19 FILLING-->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 14-19 </b> <br>
+                        Reading Passage 2 has nine paragraphs, A-I. <br>
+                        Which paragraph contains the following information?<br>
+                        <i>
+                            Write the correct letter <b>A-I</b>  in boxes <b>14-19</b>  on your answer sheet.
+                        </i>
+                    </p>
+                    
+                    <div class="question">
+                        <label for="question14" >
+                            <span class="number">14</span> 
+                            <input id="question14" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[14]"  >
+                            a biological explanation of the teacher-subjects’ behaviour
+                        </label> 
+                    </div>
+                    <div class="question">
+                        <label for="question15" >
+                            <span class="number">15</span> 
+                            <input id="question15" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[15]"  >
+                            the explanation Milgram gave the teacher-subjects for the experiment 
+                        </label> 
+                    </div>
+                    <div class="question">
+                        <label for="question16" >
+                            <span class="number">16</span> 
+                            <input id="question16" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[16]"  >
+                            the identity of the pupils
+                        </label> 
+                    </div><div class="question">
+                        <label for="question17" >
+                            <span class="number">17</span> 
+                            <input id="question17" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[17]"  >
+                            the expected statistical outcome
+                        </label> 
+                    </div><div class="question">
+                        <label for="question18" >
+                            <span class="number">18</span> 
+                            <input id="question18" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[18]"  >
+                            the general aim of sociobiological study
+                        </label> 
+                    </div><div class="question">
+                        <label for="question19" >
+                            <span class="number">19</span> 
+                            <input id="question19" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[19]"  >
+                            the way Milgram persuaded the teacher-subjects to continue
+                        </label> 
+                    </div>
+
+                            
+                </div>
+
+                <!-- Question 20-22 ABCD-->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 20-22 </b> <br>
+                        <i>
+                            Choose the correct answer.   <br>
+                            Write your answers in boxes <b>20-22</b>  on your answer sheet.
+                        </i>
+                    </p>
+
+                    <div class="question" id="question20">
+                        <span class="number">20</span> 
+                        <p class="question-multi">The teacher-subjects were told that they were testing whether</p>
+                    
+                        <div style="margin-top: 8px;"> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[20]" value="A"> 
+                                a 450-volt shock was dangerous.
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[20]" value="B"> 
+                                punishment helps learning.
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[20]" value="C"> 
+                                the pupils were honest.
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[20]" value="D"> 
+                                they were suited to teaching.
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                       
+                    </div>
+
+                    <div class="question" id="question21">
+                        <span class="number">21</span> 
+                        <p class="question-multi">The teacher-subjects were instructed to</p>
+                        <div style="margin-top: 8px;"> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[21]" value="A"> 
+                                stop when a pupil asked them to.
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[21]" value="B"> 
+                                denounce pupils who made mistakes.
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[21]" value="C"> 
+                                reduce the shock level after a correct answer.
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[21]" value="D"> 
+                                give punishment according to a rule.
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                        
+                    </div>
+
+                    <div class="question" id="question22">
+                        <span class="number">22</span> 
+                        <p class="question-multi">Before the experiment took place the psychiatrists</p>
+                        <div style="margin-top: 8px;"> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[22]" value="A"> 
+                                believed that a shock of 150 volts was too dangerous.
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[22]" value="B"> 
+                                failed to agree on how the teacher-subjects would respond to instructions.
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[22]" value="C"> 
+                                underestimated the teacher-subjects’ willingness to comply with experimental 
+    procedure.
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[22]" value="D"> 
+                                thought that many of the teacher-subjects would administer a shock of 450 volts.
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                        
+                    </div>
+                    
+                    
+
+                            
+                </div>
+
+                <!-- Question 23-26 TRUE FALSE -->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 23-26 </b> <br>
+                        <i>
+                            Do the following statements agree with the information given in Reading Passage 2 <br>
+                            In boxes <b>23-26</b>  on your answer sheet, choose:
+                        </i>
+                    </p>
+                        <div style="border-radius: 4px; border: solid 1px #ccc; margin-bottom: 16px; cursor: context-menu;">
+                            <table class="table">
+                                <tr class="odd">
+                                    <td>
+                                        <b>TRUE</b> 
+                                    </td>
+                                    <td>
+                                        if the statement agrees with the information
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td>
+                                       <b>FALSE</b> 
+                                    </td>
+                                    <td>
+                                        if the statement contradicts the information
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>
+                                       <b>NOT GIVEN</b> 
+                                    </td>
+                                    <td>
+                                        if there is no information on this
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question23">
+                            <span class="number">23</span> 
+                                <select id="question23" class="select" form="sheetdb-form" name="data[23]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Several of the subjects were psychology students at Yale University.
+
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question24">
+                            <span class="number">24</span> 
+                                <select id="question24" class="select" form="sheetdb-form" name="data[24]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Some people may believe that the teacher-subjects’ behaviour could be explained as a 
+                                positive survival mechanism.
+
+                        </label> 
+                    </div>
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question25">
+                            <span class="number">25</span> 
+                                <select id="question25" class="select" form="sheetdb-form" name="data[25]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Ina sociological explanation, personal values are more powerful than authority.
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question26">
+                            <span class="number">26</span> 
+                                <select id="question26" class="select" form="sheetdb-form" name="data[26]"> 
+                                    <option value=""></option> 
+                                    <option value="TRUE" >TRUE</option>    
+                                    <option value="FALSE" >FALSE</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Milgram’s experiment solves an important question in sociobiology.
+                        </label> 
+                    </div>
+                </div>
+
+                <!-- Question 27-32 YES NO NOT GIVEN -->
+                <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 27-32 </b> <br>
+                        <i>
+                            Do the following statements agree with the information given in Reading Passage 2 <br>
+                            In boxes <b>27-32</b>  on your answer sheet, choose:
+                        </i>
+                    </p>
+                        <div style="border-radius: 4px; border: solid 1px #ccc; margin-bottom: 16px; cursor: context-menu;">
+                            <table class="table">
+                                <tr class="odd">
+                                    <td>
+                                        <b>YES</b> 
+                                    </td>
+                                    <td>
+                                        if the statement agrees with the writer's claims
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td>
+                                       <b>NO</b> 
+                                    </td>
+                                    <td>
+                                        if the statement contradicts the writer's claims
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>
+                                       <b>NOT GIVEN</b> 
+                                    </td>
+                                    <td>
+                                        if it is impossible to say what the writer thinks about this
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question27">
+                            <span class="number">27</span> 
+                                <select id="question27" class="select" form="sheetdb-form" name="data[27]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Environmentalists take a pessimistic view of the world for a number of reasons.
+
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question28">
+                            <span class="number">28</span> 
+                                <select id="question28" class="select" form="sheetdb-form" name="data[28]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Data on the Earth’s natural resources has only been collected since 1972.
+
+                        </label> 
+                    </div>
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question29">
+                            <span class="number">29</span> 
+                                <select id="question29" class="select" form="sheetdb-form" name="data[29]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                The number of starving people in the world has increased in recent years.
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question30">
+                            <span class="number">30</span> 
+                                <select id="question30" class="select" form="sheetdb-form" name="data[30]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Extinct species are being replaced by new species.
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question31">
+                            <span class="number">31</span> 
+                                <select id="question31" class="select" form="sheetdb-form" name="data[31]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                Some pollution problems have been correctly linked to industrialization.
+                        </label> 
+                    </div>
+
+                    <div  class="question" style="font-weight: 400;">
+                        <label for="question32">
+                            <span class="number">32</span> 
+                                <select id="question32" class="select" form="sheetdb-form" name="data[32]"> 
+                                    <option value=""></option> 
+                                    <option value="YES" >YES</option>    
+                                    <option value="NO" >NO</option>    
+                                    <option value="NOT GIVEN" >NOT GIVEN</option>    
+                                </select>
+                                It would be best to attempt to slow down economic growth.
+                        </label> 
+                    </div>
+                </div>
+
+                 <!-- Question 33-37 ABCD-->
+                 <div class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 33-37 </b> <br>
+                        <i>
+                            Choose the correct answer.   <br>
+                            Write your answers in boxes <b>33-37</b>  on your answer sheet.
+                        </i>
+                    </p>
+
+                    <div class="question" id="question33" >
+                        <span class="number">33</span> 
+                        <p class="question-multi">What aspect of scientific research does the writer express concern about in paragraph 4?</p>
+                        <div style="margin-top: 8px;">
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[33]" value="A"> 
+                                the need to produce results
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[33]" value="B"> 
+                                the lack of financial support
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[33]" value="C"> 
+                                the selection of areas to research
+    
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[33]" value="D"> 
+                                the desire to solve every research problem
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                    </div>
+                    
+                    <div class="question" id="question34" >
+                        <span class="number">34</span> 
+                        <p class="question-multi"> The writer quotes from the Worldwide Fund for Nature to illustrate how</p>
+                        <div style="margin-top: 8px;">
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[34]" value="A"> 
+                                influential the mass media can be.
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[34]" value="B"> 
+                                effective environmental groups can be.
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[34]" value="C"> 
+                                the mass media can help groups raise funds.
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[34]" value="D"> 
+                                environmental! groups can exaggerate their claims.
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                    </div>
+                    
+                    <div class="question" id="question35" >
+                        <span class="number">35</span> 
+                        <p class="question-multi"> What is the writer’s main point about lobby groups in paragraph 6?</p>
+                        <div style="margin-top: 8px;">
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[35]" value="A"> 
+                                Some are more active than others.
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[35]" value="B"> 
+                                Some are better organised than others.
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[35]" value="C"> 
+                                Some receive more criticism than others.
+    
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[35]" value="D"> 
+                                Some support more important issues than others.
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                    </div>
+                    
+                    <div class="question" id="question36" >
+                        <span class="number">36</span> 
+                        <p class="question-multi">The writer suggests that newspapers print items that are intended to</p>
+                        <div style="margin-top: 8px;">
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[36]" value="A"> 
+                                educate readers.
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[36]" value="B"> 
+                                meet their readers’ expectations.
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[36]" value="C"> 
+                                encourage feedback from readers.
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[36]" value="D"> 
+                                mislead readers.
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                    </div>
+                    
+                    <div class="question" id="question37" >
+                        <span class="number">37</span> 
+                        <p class="question-multi">What does the writer say about America’s waste problem?</p>
+                        <div style="margin-top: 8px;">
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[37]" value="A"> 
+                                It will increase in line with population growth.
+                                <span class="checkmark_radio"> </span> 
+                            </label>
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[37]" value="B"> 
+                                It is not as important as we have been led to believe.
+                                <span class="checkmark_radio"> </span> 
+                            </label>             
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[37]" value="C"> 
+                                It has been reduced through public awareness of the issues. 
+    
+                                <span class="checkmark_radio"> </span> 
+                            </label> 
+                            <label class="container_radio"> 
+                                <input class="multi-choice" type="radio" form="sheetdb-form" name="data[37]" value="D"> 
+                                It is only significant in certain areas of the country.
+                                <span class="checkmark_radio"> </span> 
+                            </label>          
+                        </div>
+                    </div>
+                    
+                   
+
+                   
+                    
+                    
+
+                            
+                </div>
+                         
+                 <!-- Question 38-40 FILLING-->
+                 <div  class="question-container">
+                    <p class="question-group-description"> 
+                        <b>Questions 38-40 </b> <br>
+                        <i>
+                            Complete the summary with the list of words <b>A-I</b>  below. <br>
+                            Write the correct letter <b>A-I</b> in boxes <b>38-40</b>  on your answer sheet.
+                        </i>
+                    </p>
+
+                    <div style="display: flex; flex-wrap: wrap; margin: 0 0 16px 16px;"> 
+                        <p style="width:25%"><b>A</b>  unrealistic </p>
+                        <p style="width:25%"><b>B</b>  agreed</p>
+                        <p style="width:25%"><b>C</b>  expensive</p>
+                        <p style="width:25%"><b>D</b>  right </p>
+                        <p style="width:25%"><b>E</b>  long-term</p>
+                        <p style="width:25%"><b>F</b>  usual</p>
+                        <p style="width:25%"><b>G</b>  surprising </p>
+                        <p style="width:25%"><b>H</b>  personal</p>
+                        <p style="width:25%"><b>I</b>  urgent</p>
+                    </div>
+
+
+                    <div class="paragraph-input-text">
+                        <p style="text-align: center; font-weight: 700;">GLOBAL WARMING</p>
+                        <br>
+                        <p>
+                            The writer admits that global warming is a 
+                        <label for="question38">
+                            <span class="number">38</span> 
+                            <input id="question38" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[38]"  >
+                        </label>  
+                        challenge, but says that it will not 
+                        have a catastrophic impact on our future, if we deal with it in the
+                        <label for="question39">
+                            <span class="number">39</span> 
+                            <input id="question39" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[39]"  >
+                        </label> 
+                        way. If we try 
+                        to reduce the levels of greenhouse gases, he believes that it would only have a minimal impact 
+                        on rising temperatures. He feels it would be better to spend money on the more 
+                        <label for="question40">
+                            <span class="number">40</span> 
+                            <input id="question40" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[40]"  >
+                        </label> 
+                        health problem of providing the world’s population with clean drinking water.
+                        </p>
+                    </div>
+                   
+            
+                     
+                </div>
+
+            </div>
+        </section>
+
+    </section>
+      
+    <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="part-group-btn">
+                    <a href="#part1">
+                        <button class="button">
+                            Passage 1
+                        </button>
+                    </a>
+                    <a href="#part2">
+                        <button class="button">
+                            Passage 2
+                        </button>
+                    </a>
+                    <a href="#part3">
+                        <button class="button">
+                            Passage 3
+                        </button>
+                    </a>
+                   
+                   
+                   
+                </div>
+    
+                <div class="submit-group-btn">
+                    <button class="button" type="submit" form="sheetdb-form"> 
+                        <img class="icon" src="assets/icon/submit.svg" alt="">
+                        <span> Submit</span>
+                    </button>
+                    <button class="button" onclick="showlist()">
+                        <img class="icon" src="assets/icon/review.svg" alt="">
+                        <span>Question palette</span>
+                    </button>
+                </div>
+            </div>
+            
+        </footer>
+
+
+
+<script>
+
+     // SUMBIT ANSWER
+     var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+            
+            e.preventDefault();
+            // Submit time
+            $("#time").val(new Date()); 
+
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(document.getElementById("sheetdb-form")),
+            }).then(
+                response => response.json()
+            ).then((html) => {
+                // you can put any JS code here
+                // alert('Your answers have been submitted successfully')
+                 // Pause the audio and show completed noti
+                document.getElementById("completed").className = "show"
+            });
+        });
+
+
+    // SMOOTH SCROLL 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+            
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+                });
+            });
+        }
+        );
+        
+        
+
+
+
+    // CHANGE PALETTE COLOR WHEN CHECKED
+    $("input[type=radio]").on('change', function () {
+            name = $(this).attr("name"); //name = data[1]
+            palleteItem = document.getElementById(name);
+            palleteItem.classList.add("change");
+            palleteItem.classList.remove("default");
+    });
+
+    $("input[type=input]").on('change', function () {
+            name = $(this).attr("name"); //name = data[1]
+            palleteItem = document.getElementById(name);
+            palleteItem.classList.add("change");
+            palleteItem.classList.remove("default");
+    });
+
+    $("select").on('change', function () {
+            name = $(this).attr("name"); //name = data[1]
+            palleteItem = document.getElementById(name);
+            palleteItem.classList.add("change");
+            palleteItem.classList.remove("default");
+    });
+
+    // AUTO CREATE PALETTE
+    function initPalleteItems() {
+            for(var i=1; i<=40; i++){
+                $(".palette").append(`
+                <div id="data[${i}]" class="grid-item default">
+                    <a href="#question${i}" >${i}</a>
+                </div>`
+                )
+            }
+        }
+    initPalleteItems(); 
+
+
+
+    // SHOW and HIDE LIST WHEN CLICK ON LIST BUTTON
+    function showlist() {
+        var x = document.getElementById("sidenav");
+        var isShow = x.getAttribute('data-is-show');
+            if (isShow == 0 ) {
+                x.setAttribute("data-is-show", "1");
+                // document.getElementById("sidenav").style.width = "372px";
+                document.getElementById("sidenav").style.marginRight = "0px";
+                document.getElementById("content").style.marginRight = "280px";
+            } else {
+                x.setAttribute("data-is-show", "0");
+                // document.getElementById("sidenav").style.width = "0";
+                document.getElementById("sidenav").style.marginRight = "-280px";
+                document.getElementById("content").style.marginRight = "-6px";
+            }
+         };
+
+
+    // START BAR
+    $("#confirm-start").on('click', function () {
+            $(this).parents("#confirm-start").fadeOut();
+        });
+
+            $("#timeout").on('click', function () {
+            $("#timeout").removeClass("hide").addClass("show");
+        });
+
+
+
+
+    // CHECK PASSWORD
+            // Get references to the elements you'll be working with
+            var input = document.getElementById("password");
+            var div = document.getElementById("HIDDENDIV");
+            var btn = document.getElementById("startbtn");
+
+            // Set up event handlers in JavaScript
+            startbtn.addEventListener("click", validate);
+
+            function validate(){
+            if (input.value == '7H9BE2WH') { 
+                // No need to add a "show" class. Just remove the "hidden" class.
+                $(this).parents("#confirm-start").fadeOut();
+
+                // TIMER
+                var presentTimeEl = document.getElementById('timer');
+                    let timeArray = presentTimeEl.innerText.split(/[:]+/);
+                    var min = timeArray[0];
+                    var sec = timeArray[1];
+
+                    function startTimer() {
+                        sec--;
+                        if (sec < 10 && sec >= 0) { sec = "0" + sec };
+                        if (sec < 0) { sec = 59 };
+                        if (sec == 59) {
+                            min--;
+                        }
+                        if (min.toString().length == 1) {
+                            min = '0' + min;
+                        }
+                        console.log(min.length)
+                        presentTimeEl.innerText = min + ":" + sec;
+                        if (min < 0) {
+                            clearInterval(countdown);
+                            console.log('end')
+                            presentTimeEl.innerText = "Time out!";
+
+
+                            // Auto submit when timeout
+                            var form = document.getElementById('sheetdb-form');
+                                 // Submit time
+                                 $("#time").val(new Date()); 
+                                    fetch(form.action, {
+                                        method: "POST",
+                                        body: new FormData(document.getElementById("sheetdb-form")),
+                                    }).then(
+                                        response => response.json()
+                                    ).then((html) => {
+                                        // you can put any JS code here
+                                        // Pause the audio and show timeout noti
+
+                                        document.getElementById("timeout").className = "show";
+                                       
+                                    });
+                            ;
+                        }
+                    }
+                    var countdown = setInterval(startTimer, 1000);
+                    
+                  
+            } else {  
+                password.focus(); // <-- If you don't do this first, your select code won't work
+                password.setSelectionRange(0, password.value.length);   
+                alert('Invalid Password!'); 
+            }
+            };
+
+</script>
+
+</body>
+</html>
