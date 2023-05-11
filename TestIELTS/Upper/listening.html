@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listening</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <audio controls id="myAudio" style="display: none; z-index: 13;" >
+        <source src="assets/audio/audio.mp3" type="audio/mp3">
+    </audio>
+    <!-- TIMEOUT  NOTI-->
+    <div id="timeout" class="hide">
+        <div class="timeout-container">
+            <div class="timeout-description">
+                    <p style="font-size: 24px; font-weight: 700; text-align: center;">TIME OUT</p>
+                <br>
+                <p>Time has expired for this Listening Test, please click Continue to move on to the Reading Test </p>
+                <br>
+                <div class="timeout-btn" onclick="window.location.href = 'reading.html'" >
+                    Continue
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPLETED  NOTI-->
+    <div id="completed" class="hide" style="z-index: 13;">
+        <div class="timeout-container">
+            <div class="timeout-description">
+                    <p style="font-size: 24px; font-weight: 700; text-align: center;">SUCESSFULLY</p>
+                <br>
+                <p>Your answers have been submitted successfully, please click Continue to move on to the Reading Test</p>
+                <br>
+                <div class="timeout-btn" onclick="window.location.href = 'reading.html'">
+                    Continue
+                </div>
+            </div>
+        </div>
+    </div>
+
+     
+
+
+    <form action="https://sheetdb.io/api/v1/ev5c073ppebxe" method="POST" id="sheetdb-form">
+        <input id="time" name="data[time]" type="hidden" form="sheetdb-form"  />
+    </form>
+    <!-- CONFIRM TO START NOTI-->
+    <div id="confirm-start">
+        <div class="confirm-start-container">
+            <div class="start-description">
+                <p style="font-size: 24px; font-weight: 700; text-align: center; color: #C0392B;">IELTS UPPER INTERMEDIATE FINAL TEST</p>
+            <p style="font-size: 18px;"><b> Listening</b> </p> <br>
+            <p style="text-align: justify;">
+                <b>Format:</b>  There are four parts with ten questions each. The questions are designed so that the answers appear in the order they are heard in the audio.
+                <br><br>
+                <b>Timing:</b> Approximately 30 minutes (plus 10 minutes transfer time).
+                <br><br>
+                <b>No. of questions:</b>  40
+                <br><br>
+                <b>Answering:</b>  Test takers write their answers on the question paper as they listen and at the end of the test are given 10 minutes to transfer their answers to an answer sheet. Care should be taken when writing answers on the answer sheet as poor spelling and grammar are penalised.
+                <br>
+            </p>
+            <br>
+            <p style="text-align: justify; color:#192A56 !important;">
+                <img class="icon" src="assets/icon/warning.svg" style="display: inline-block; line-height: 30px; height: 28px !important;">
+                <span style="color:#192A56 !important; vertical-align:middle;"> <b> The audio will auto play and the countdown timer will begin when you click on Start.</b>  </span> 
+            </p>
+            
+            </div>
+            <br>
+
+            
+            <div class="info-submit">
+                <!-- INPUT NAME -->
+                <div class="submit-start-grid">
+                    <label for="name">
+                        <p>Name</p> 
+                        <input autocomplete="new-password" type="text" form="sheetdb-form" name="data[name]" placeholder="Enter your name" onkeypress="return event.keyCode != 13;">
+                    </label>
+                </div>
+                
+                <!-- INPUT KEY -->
+                <div class="submit-start-grid"> 
+                    <label for="key">
+                        <p>Password</p>
+                        <input id="password" type="password" placeholder="Enter a private key" onkeypress="return event.keyCode != 13;">
+                    </label>
+                
+                </div>
+                <!-- CHECK KEY AND START -->
+                <div>
+                    <label for="start">
+                        <p></p>
+                        <input id="startbtn" type="button" value="Start" class="start-btn">
+                    </label>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+  
+    <!-- HEADER -->
+        <header class="header">
+            <div class="header-container">
+                <div class="skill-name">
+                    LISTENING
+                </div>
+                
+                <div class="timer">
+                    <img style="height: 20px; vertical-align:middle;" src="assets/icon/time.svg" alt="">
+                    <b>
+                        <span id="timer" style="font-size: 20px !important;">40:00</span>
+                    </b>
+                   
+                </div>
+                <div class="event-name">
+                    IELTS UPPER INTERMEDIATE FINAL TEST
+                </div>
+            </div>
+        </header>
+
+     <!-- SIDENAV -->
+     <div id="sidenav" class="sidenav" style="width: 372px !important; margin-right: 0;">
+        <div>
+            <img src="" alt="">
+        </div>
+      <div style="padding-left: 32px;">
+          <img style="height: 20px; vertical-align:middle;" src="assets/icon/palette.svg" alt="">
+                  <b>
+                      <span style="font-size: 20px !important; vertical-align:middle; color: #C0392B;" >Question palette</span>
+                  </b>
+      </div>
+      <div class="palette" style="grid-template-columns: auto auto auto auto auto auto auto auto;">
+          
+      </div>
+      <div class="palette-description" style="order: 2 !important;">
+            <div class="answered">
+                <div class="answered-question"></div> Answered
+            </div>
+        
+            <div class="unanswered">
+                <div class="unanswered-question"></div> Unanswered
+            </div>
+      </div>
+  </div>
+
+    <!-- CONTENT -->
+     <section id="content" style="margin-right: 372px; width: calc(100% - 372px);">
+
+            <div class="left-content-container" style="width: 100%;">
+                    <div id="part1">
+                        <p class="passage-title">PART 1 Questions 1-10</p>
+                        <!-- Question 1-7 FILLING-->
+                        <div  class="question-container">
+                        <p class="question-group-description"> 
+                            <b>Questions 1-7 </b> <br>
+                            <i>
+                                Complete the notes below. <br>
+                                Write <span class="question-highlight">ONE WORD ONLY </span> for each answer.  <br>
+                            </i>
+                        
+                        </p>
+                    <div class="paragraph-input-text" style="width: fit-content !important; margin-left: auto; margin-right: auto;"> 
+                        <p style="text-align: center; font-weight:  700;">Opportunities for voluntary work in Southoe village</p>
+                       
+                        <span style="font-weight: bold;"> Library</span>          
+                        <br>
+                        <ul style="margin-left: 32px;">
+                            <li>Help with 
+                                <label for="question1">
+                                <span class="number">1</span> 
+                                <input id="question1" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[1]"  >
+                            </label>  books (times to be arranged)
+                            </li>
+                            <li>Help needed to keep 
+                                <label for="question2">
+                                <span class="number">2</span> 
+                                <input id="question2" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[2]"  >
+                            </label>  of books up to date
+                            </li>
+                            <li>Library is in the <label for="question3">
+                                <span class="number">3</span> 
+                                <input id="question3" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[3]"  >
+                            </label> Room in the village hall
+                            </li>
+                        </ul>
+                        <br>
+                        <span style="font-weight: bold;">Lunch club </span>
+                        <ul style="margin-left: 32px;">
+                            <li>
+                                Help by providing <label for="question4">
+                                    <span class="number">4</span> 
+                                    <input id="question4" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[4]"  >
+                                </label> 
+                            </li>
+                            <li>
+                                Help with hobbies such as <label for="question5">
+                                    <span class="number">5</span> 
+                                    <input id="question5" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[5]"  >
+                                </label> 
+                            </li>
+                        </ul>
+                        <br>
+                        <span style="font-weight: bold;">Help for individuals needed next week  </span>
+                        <ul style="margin-left: 32px;">
+                            <li>
+                                Taking Mrs Carroll to<label for="question6">
+                                    <span class="number">6</span> 
+                                    <input id="question6" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[6]"  >
+                                </label> 
+                            </li>
+                            <li>
+                                Work in the <label for="question7">
+                                    <span class="number">7</span> 
+                                    <input id="question7" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[7]"  >
+                                </label> at Mr Selsbury's house
+                            </li>
+                        </ul>
+                        </div>
+
+                        </div>
+                        <!-- Question 8-10 FILLING-->
+                       <div  class="question-container">
+                        <p class="question-group-description"> 
+                            <b>Questions 8-10 </b> <br>
+                            <i>
+                                Complete the notes below.<br>
+                                Write <span class="question-highlight">ONE WORD ONLY</span> for each answer. <br>
+                            </i>
+                        
+                        </p>
+                        <div style="border-radius: 4px; border: solid 1px #ccc;">
+                            <table class="table" style="border: solid 1px #ccc;">
+                                <tr>
+                                    <th colspan="4" class="showbd">
+                                        VILLAGE SOCIAL EVENTS
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="showbd">
+                                        Date
+                                    </th>
+                                    <th  class="showbd">
+                                        Event 
+                                    </th>
+                                    <th  class="showbd">
+                                        Location
+                                    </th>
+                                    <th  class="showbd">
+                                        Help needed
+                                    </th>
+                                </tr>
+                                <tr >
+                                    <td class="showbd" style="text-align: left;">19 Oct</td>
+                                    <td class="showbd" style="text-align: left;">
+                                        <label for="question8">
+                                            <span class="number">8</span>
+                                            <input id="question8" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[8]"  >
+                                        </label>
+                                    </td>
+                                    <td class="showbd" style="text-align: left;"> Village hall </td>
+                                    <td class="showbd" style="text-align: left;"> providing refreshments</td>
+                                </tr>
+
+                                <tr >
+                                    <td class="showbd" style="text-align: left;">18 Nov </td>
+                                    <td class="showbd" style="text-align: left;">dance</td>
+                                    <td class="showbd" style="text-align: left;"> Village hall </td>
+                                    <td class="showbd" style="text-align: left;"> checking
+                                         <label for="question9"> 
+                                        <span class="number">9</span>
+                                        <input id="question9" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[9]"  >
+                                    </label>
+                                    </td>
+                                </tr>
+
+                                <tr >
+                                    <td class="showbd" style="text-align: left;">31 Dec </td>
+                                    <td class="showbd" style="text-align: left;">New Year's Eve party</td>
+                                    <td class="showbd" style="text-align: left;"> Mountfort Hotel </td>
+                                    <td class="showbd" style="text-align: left;"> designing the 
+                                         <label for="question10">
+                                        <span class="number">10</span>
+                                        <input id="question10" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[10]"  >
+                                    </label>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                       
+                        </div>
+                    </div>
+
+                    <hr style="margin: 21px 0; border: none;">
+
+                    <div id="part2">
+                        <p class="passage-title">PART 2 Questions 11-20</p>
+                        <!-- Question 11-14 ABCD-->
+                        <div class="question-container">
+                            <p class="question-group-description"> 
+                                <b>Questions 11-14 </b> <br>
+                                <i>
+                                    Choose the correct answer. <b>A, B</b> or <b>C.</b>
+                                </i>
+                            </p>
+                            <p style="text-align: center; font-weight:  700;">Oniton Hall</p>
+                            <div class="question" id="question11">
+                                <span class="number">11</span> 
+                                <p class="question-multi">Many past owners made changes to </p>
+                            
+                                <div style="margin-top: 8px;"> 
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[11]" value="A"> 
+                                        <b>A</b> the gardens.
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[11]" value="B"> 
+                                        <b>B</b> the house. 
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>             
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[11]" value="C"> 
+                                        <b>C</b> the farm.
+                                        <span class="checkmark_radio"> </span> 
+                                    </label> 
+                                </div>
+                            
+                            </div>
+
+                            <div class="question" id="question12">
+                                <span class="number">12</span> 
+                                <p class="question-multi">Sir Edward Downes built Oniton Hall because he wanted
+                                </p>
+                                <div style="margin-top: 8px;"> 
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[12]" value="A"> 
+                                        <b>A</b> a place for discussing politics.
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[12]" value="B"> 
+                                        <b>B</b> a place to display his wealth.
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>             
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[12]" value="C"> 
+                                        <b>C</b> a place for artists and writers. 
+                                        <span class="checkmark_radio"> </span> 
+                                    </label> 
+                                </div>
+                                
+                            </div>
+
+                            <div class="question" id="question13">
+                                <span class="number">13</span> 
+                                <p class="question-multi">Visitors can learn about the work of servants in the past from</p>
+                                <div style="margin-top: 8px;"> 
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[13]" value="A"> 
+                                        <b>A</b> audio guides.
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[13]" value="B"> 
+                                        <b>B</b> photographs.
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>             
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[13]" value="C"> 
+                                        <b>C</b> people in costume.
+                                        <span class="checkmark_radio"> </span> 
+                                    </label> 
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="question" id="question14">
+                                <span class="number">14</span> 
+                                <p class="question-multi">What is new for children at Oniton Hall?</p>
+                                <div style="margin-top: 8px;"> 
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[14]" value="A"> 
+                                        <b>A</b> clothes for dressing up
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[14]" value="B"> 
+                                        <b>B</b> mini tractors 
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>             
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[14]" value="C"> 
+                                        <b>C</b> the adventure playground
+                                        <span class="checkmark_radio"> </span> 
+                                    </label> 
+                                </div>
+                                
+                            </div>
+
+                                    
+                        </div>
+
+                        <!-- Question 15-20 FILLING-->
+                        <div class="question-container">
+                            <p class="question-group-description"> 
+                                <b>Questions 15-20 </b> <br>
+                                <i>
+                                    Which activity is offered at each of the following locations on the farm?  <br>
+                                   Choose <b>SIX</b> answers from the box and write the correct letter, <b> A-H</b>, next to Questions 15--20.    <br>
+                                </i>
+                               
+                            </p>
+        
+                            <div class="paragraph-input-text" style="width: fit-content !important; margin-left: auto; margin-right: auto;"> 
+                                <p style="text-align: center; font-weight:  700;">Activities</p>
+                                <br>
+                                    <p><b>A</b>  shopping  </p>
+                                    <p><b>B</b>  watching cows being milked</p> 
+                                    <p><b>C</b>  seeing old farming equipment</p> 
+                                    <p><b>D</b>  eating and drinking  </p>
+                                    <p><b>E</b>  starting a trip   </p>
+                                    <p><b>F</b>  seeing rare breeds of animals</p> 
+                                    <p><b>G</b>  helping to look after animals</p> 
+                                    <p><b>H</b>  using farming tools   </p>                               
+                            </div>
+                            <br>
+                            <div style="border:  none !important; width: fit-content !important;">
+                                <table class="table" style="border: none !important; border-collapse:collapse !important;">
+                                    
+                                    <tr style="border: none !important; border-collapse:collapse !important;">
+                                        <th >
+                                            Locations on the farm
+                                        </th>
+                                        <th> </th>
+                                    </tr>
+
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">15</span> dairy 
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question15">
+                                                <input id="question15" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[15]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">16</span> large barn 
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question16">
+                                                <input id="question16" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[16]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">17</span> small barn
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question17">
+                                                <input id="question17" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[17]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">18</span> stables 
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question18">
+                                                <input id="question18" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[18]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">19</span> shed 
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question19">
+                                                <input id="question19" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[19]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+                                    
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">20</span> parkland
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question20">
+                                                <input id="question20" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[20]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+
+    
+                                    
+    
+                                </table>
+                            </div>
+        
+                                    
+                        </div>    
+                    </div>
+
+                    <hr style="margin: 21px 0; border: none;">
+
+                    <div id="part3">
+                        <p class="passage-title">PART 3 Questions 21-30</p>
+                        <!-- Question 21-22 FILLING-->
+                        <div class="question-container">
+                            <p class="question-group-description"> 
+                                <b>Questions 21 and 22 </b> <br>
+                                <i>
+                                <b>Choose TWO letters A-E.</b>  <br>
+                                <b>NB</b> Your answers may be given in any order.
+                                </i>
+                            
+                            </p>
+        
+                            <div class="question">
+                                <p>Which <b>TWO</b>things do the students agree they need to include in their reviews of Romeo and Juliet? </p>
+                                <p style="margin-left: 16px;"> 
+                                <b>A</b> analysis of the text  <br>
+                                <b>B</b> a summary of the plot <br>
+                                <b>C</b> a description of the theatre   <br>
+                                <b>D</b> a personal reaction   <br>
+                                <b>E</b> a reference to particular scenes<br>
+                                </p>
+                            </div>
+                            <div>
+                                <label for="question21" style="margin-left: 16px;">
+                                    <span class="number">21</span> 
+                                    <input id="question21" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[21]"  >
+                                </label> 
+                                <label for="question22" style="margin-left: 8px;">
+                                    <span class="number">22</span> 
+                                    <input id="question22" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[22]"  >
+                                </label> 
+                            </div>
+        
+                                    
+                        </div>
+
+                        <!-- Question 23-27 FILLING-->
+                        <div class="question-container">
+                            <p class="question-group-description"> 
+                                <b>Questions 23-27 </b> <br>
+                                <i>
+                                    Which opinion do the speakers give about each of the following aspects of The Emporium's production of Romeo and Juliet? <br>
+                                   Choose <b>FIVE</b> answers from the box and write the correct letter, <b> A-G</b>, next to Questions 23-27.    <br>
+                                </i>
+                               
+                            </p>
+        
+                            <div class="paragraph-input-text" style="width: fit-content !important; margin-left: auto; margin-right: auto;"> 
+                                <p style="text-align: center; font-weight:  700;">Activities</p>
+                                <br>
+                                    <p><b>A</b>  They both expected this to be more traditional.  </p>
+                                    <p><b>B</b>  They both thought this was original. </p> 
+                                    <p><b>C</b>  They agree this created the right atmosphere.</p> 
+                                    <p><b>D</b>  They agree this was a major strength.  </p>
+                                    <p><b>E</b>  They were both disappointed by this.   </p>
+                                    <p><b>F</b>  They disagree about why this was an issue.</p> 
+                                    <p><b>G</b>  They disagree about how this could be improved.</p>                         
+                            </div>
+                            <br>
+                            <div style="border:  none !important; width: fit-content !important;">
+                                <table class="table" style="border: none !important; border-collapse:collapse !important;">
+                                    
+                                    <tr style="border: none !important; border-collapse:collapse !important;">
+                                        <th>
+                                            Aspects of the production
+                                        </th>
+                                        <th> </th>
+                                    </tr>
+
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">23</span> the set 
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question23">
+                                                <input id="question23" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[23]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">24</span> the lighting 
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question24">
+                                                <input id="question24" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[24]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">25</span> the costume design
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question25">
+                                                <input id="question25" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[25]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">26</span> the music 
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question26">
+                                                <input id="question26" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[26]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+
+                                    <tr style="border: none !important; border-collapse:collapse !important;" >
+                                        <td style="text-align: left;">
+                                            <span class="number">27</span> the actors' delivery 
+                                        </td>
+                                        <td  style="text-align: left;">
+                                            <label for="question27">
+                                                <input id="question27" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[27]"  >
+                                            </label>
+                                        </td>        
+                                    </tr>
+                                </table>
+                            </div>
+        
+                                    
+                        </div>   
+                        
+                         <!-- Question 28-30 ABCD-->
+                        <div class="question-container">
+                            <p class="question-group-description"> 
+                                <b>Questions 28-30 </b> <br>
+                                <i>
+                                    Choose the correct answer. <b>A, B</b> or <b>C.</b>
+                                </i>
+                            </p>
+                        
+                            <div class="question" id="question28">
+                                <span class="number">28</span> 
+                                <p class="question-multi">The students think the story of Romeo and Juliet is still relevant for young people today because </p>
+                                <div style="margin-top: 8px;"> 
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[28]" value="A"> 
+                                        <b>A</b> it illustrates how easily conflict can start. 
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[28]" value="B"> 
+                                        <b>B</b> it deals with problems that families experience.
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>             
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[28]" value="C"> 
+                                        <b>C</b> it teaches them about relationships. 
+                                        <span class="checkmark_radio"> </span> 
+                                    </label> 
+                                </div> 
+                            </div>
+
+                            <div class="question" id="question29">
+                                <span class="number">29</span> 
+                                <p class="question-multi">The students found watching Romeo and Juliet in another language 
+                                </p>
+                                <div style="margin-top: 8px;"> 
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[29]" value="A"> 
+                                        <b>A</b> frustrating. 
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[29]" value="B"> 
+                                        <b>B</b> demanding. 
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>             
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[29]" value="C"> 
+                                        <b>C</b> moving. 
+                                        <span class="checkmark_radio"> </span> 
+                                    </label> 
+                                </div>
+                            </div>
+
+                            <div class="question" id="question30">
+                                <span class="number">30</span> 
+                                <p class="question-multi">Why do the students think Shakespeare's plays have such international appeal?</p>
+                                <div style="margin-top: 8px;"> 
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[30]" value="A"> 
+                                        <b>A</b> The stories are exciting. 
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[30]" value="B"> 
+                                        <b>B</b> There are recognisable characters.
+                                        <span class="checkmark_radio"> </span> 
+                                    </label>             
+                                    <label class="container_radio"> 
+                                        <input class="multi-choice" type="radio" form="sheetdb-form" name="data[30]" value="C"> 
+                                        <b>C</b> They can be interpreted in many ways.
+                                        <span class="checkmark_radio"> </span> 
+                                    </label> 
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+
+                    <hr style="margin: 21px 0; border: none;">
+
+                    <div id="part4">
+                        <p class="passage-title">PART 4 Questions 31-40</p>
+
+                        <!-- Question 31-40 FILLING-->
+                        <div  class="question-container">
+                            <p class="question-group-description"> 
+                                <i>
+                                    Complete the notes below. <br>
+                                    Write <span class="question-highlight">ONE WORD AND/OR A NUMBER</span> for each answer.  <br>
+                                </i>
+                            
+                            </p>
+                        <div class="paragraph-input-text" style="width: fit-content !important; margin-left: auto; margin-right: auto;"> 
+                            <p style="text-align: center; font-weight:  700;">The impact of digital technology on the Icelandic language</p>
+                           
+                            <span style="font-weight: bold;"> The Icelandic language </span>          
+                            <br>
+                            <ul style="margin-left: 32px;">
+                                <li>has approximately
+                                    <label for="question31">
+                                    <span class="number">31</span> 
+                                    <input id="question31" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[31]"  >
+                                </label>  speakers
+                                </li>
+                                <li>has a
+                                    <label for="question32">
+                                    <span class="number">32</span> 
+                                    <input id="question32" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[32]"  >
+                                </label>  that is still growing
+                                </li>
+                                <li>
+                                    has not changed a lot over the last thousand years
+                                </li>
+                                <li>has its own words for computer-based concepts, such as web browser and 
+                                    <label for="question33">
+                                    <span class="number">33</span> 
+                                    <input id="question33" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[33]"  >
+                                </label> 
+                                </li>
+                            </ul>
+                            <br>
+
+                            <span style="font-weight: bold;">Young speakers  </span>
+                            <ul style="margin-left: 32px;">
+                                <li>
+                                    are big users of digital technology, such as <label for="question34">
+                                        <span class="number">34</span> 
+                                        <input id="question34" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[34]"  >
+                                    </label> 
+                                </li>
+                                <li>
+                                    are becoming <label for="question35">
+                                        <span class="number">35</span> 
+                                        <input id="question35" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[35]"  >
+                                    </label>  very quickly
+                                </li>
+                                <li>
+                                    are having discussions using only English while they are in the<label for="question36">
+                                        <span class="number">36</span> 
+                                        <input id="question36" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[36]"  >
+                                    </label>  at school
+                                </li>
+                                <li>
+                                    are better able to identify the content of a <label for="question37">
+                                        <span class="number">37</span> 
+                                        <input id="question37" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[37]"  >
+                                    </label>in English than Icelandic 
+                                </li>
+                            </ul>
+                            <br>
+                            <span style="font-weight: bold;">Technology and internet companies </span>
+                            <ul style="margin-left: 32px;">
+                                <li>
+                                    write very little in Icelandic because of the small number of speakers and because of how complicated its <label for="question38">
+                                        <span class="number">38</span> 
+                                        <input id="question38" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[38]"  >
+                                    </label> is
+                                </li>
+                            </ul>
+                            <br>
+                            <span style="font-weight: bold;">The Icelandic government</span>
+                            <ul style="margin-left: 32px;">
+                                <li>has set up a fund to support the production of more digital content in the language
+                                </li>
+                                <li>believes that Icelandic has a secure future
+
+                                </li>
+                                <li>
+                                    is worried that young Icelanders may lose their<label for="question39">
+                                        <span class="number">39</span> 
+                                        <input id="question39" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[39]"  >
+                                    </label>  as Icelanders
+                                </li>
+                                <li>
+                                    is worried about the consequences of children not being  <label for="question40">
+                                        <span class="number">40</span> 
+                                        <input id="question40" autocomplete="new-password" type="input" class="text_input" form="sheetdb-form" name="data[40]"  >
+                                    </label>in either Icelandic or English
+                                </li>
+                            </ul>
+                            <br>
+                            </div>
+    
+                        </div>
+                    </div>                    
+            </div>
+        
+    </section>
+      
+    <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="part-group-btn">
+                    <a href="#part1">
+                        <button class="button">
+                            Part 1
+                        </button>
+                    </a>
+                    <a href="#part2">
+                        <button class="button">
+                            Part 2
+                        </button>
+                    </a>
+                    <a href="#part3">
+                        <button class="button">
+                            Part 3
+                        </button>
+                    </a>
+                    <a href="#part4">
+                        <button class="button">
+                            Part 4
+                        </button>
+                    </a>
+                   
+                   
+                   
+                </div>
+    
+                <div class="submit-group-btn">
+                    <button class="button" type="submit" form="sheetdb-form"> 
+                        <img class="icon" src="assets/icon/submit.svg" alt="">
+                        <span> Submit</span>
+                    </button>
+                    
+                </div>
+            </div>
+            
+        </footer>
+
+
+
+<script>
+
+     // SUMBIT ANSWER
+     var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+            
+            e.preventDefault();
+            // Submit time
+            $("#time").val(new Date()); 
+
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(document.getElementById("sheetdb-form")),
+            }).then(
+                response => response.json()
+            ).then((html) => {
+                // you can put any JS code here
+                // alert('Your answers have been submitted successfully')
+                // Pause the audio and show completed noti
+                document.getElementById('myAudio').pause();
+                document.getElementById("completed").className = "show"
+            });
+        });
+
+
+    // SMOOTH SCROLL 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+            
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+                });
+            });
+        }
+        );
+        
+        
+
+
+
+    // CHANGE PALETTE COLOR WHEN CHECKED
+    $("input[type=radio]").on('change', function () {
+            name = $(this).attr("name"); //name = data[1]
+            palleteItem = document.getElementById(name);
+            palleteItem.classList.add("change");
+            palleteItem.classList.remove("default");
+    });
+
+    $("input[type=input]").on('change', function () {
+            name = $(this).attr("name"); //name = data[1]
+            palleteItem = document.getElementById(name);
+            palleteItem.classList.add("change");
+            palleteItem.classList.remove("default");
+    });
+
+    $("select").on('change', function () {
+            name = $(this).attr("name"); //name = data[1]
+            palleteItem = document.getElementById(name);
+            palleteItem.classList.add("change");
+            palleteItem.classList.remove("default");
+    });
+
+    // AUTO CREATE PALETTE
+    function initPalleteItems() {
+            for(var i=1; i<=40; i++){
+                $(".palette").append(`
+                <div id="data[${i}]" class="grid-item default">
+                    <a href="#question${i}" >${i}</a>
+                </div>`
+                )
+            }
+        }
+    initPalleteItems(); 
+
+
+
+    // // SHOW and HIDE LIST WHEN CLICK ON LIST BUTTON
+    // function showlist() {
+    //     var x = document.getElementById("sidenav");
+    //     var isShow = x.getAttribute('data-is-show');
+    //         if (isShow == 0 ) {
+    //             x.setAttribute("data-is-show", "1");
+    //             // document.getElementById("sidenav").style.width = "372px";
+    //             document.getElementById("sidenav").style.marginRight = "0px";
+    //             document.getElementById("content").style.marginRight = "280px";
+    //         } else {
+    //             x.setAttribute("data-is-show", "0");
+    //             // document.getElementById("sidenav").style.width = "0";
+    //             document.getElementById("sidenav").style.marginRight = "-280px";
+    //             document.getElementById("content").style.marginRight = "-6px";
+    //         }
+    //      };
+
+
+    // START BAR
+    $("#confirm-start").on('click', function () {
+            $(this).parents("#confirm-start").fadeOut();
+        });
+
+            $("#timeout").on('click', function () {
+            $("#timeout").removeClass("hide").addClass("show");
+        });
+
+
+
+
+    // CHECK PASSWORD
+            // Get references to the elements you'll be working with
+            var input = document.getElementById("password");
+            var div = document.getElementById("HIDDENDIV");
+            var btn = document.getElementById("startbtn");
+
+            // Set up event handlers in JavaScript
+            startbtn.addEventListener("click", validate);
+
+            function validate(){
+            if (input.value == 'HBNH5NGB') { 
+                // No need to add a "show" class. Just remove the "hidden" class.
+                $(this).parents("#confirm-start").fadeOut();
+
+                // Play audio
+                document.getElementById('myAudio').play();
+
+                // TIMER
+                var presentTimeEl = document.getElementById('timer');
+                    let timeArray = presentTimeEl.innerText.split(/[:]+/);
+                    var min = timeArray[0];
+                    var sec = timeArray[1];
+
+                    function startTimer() {
+                        sec--;
+                        if (sec < 10 && sec >= 0) { sec = "0" + sec };
+                        if (sec < 0) { sec = 59 };
+                        if (sec == 59) {
+                            min--;
+                        }
+                        if (min.toString().length == 1) {
+                            min = '0' + min;
+                        }
+                        console.log(min.length)
+                        presentTimeEl.innerText = min + ":" + sec;
+                        if (min < 0) {
+                            clearInterval(countdown);
+                            console.log('end')
+                            presentTimeEl.innerText = "Time out!";
+
+
+                            // Auto submit when timeout
+                            var form = document.getElementById('sheetdb-form');
+                                 // Submit time
+                                 $("#time").val(new Date()); 
+                                    fetch(form.action, {
+                                        method: "POST",
+                                        body: new FormData(document.getElementById("sheetdb-form")),
+                                    }).then(
+                                        response => response.json()
+                                    ).then((html) => {
+                                        // you can put any JS code here
+                                       // Pause the audio and show timeout noti
+                                        document.getElementById('myAudio').pause();
+                                        document.getElementById("timeout").className = "show";
+                                       
+                                    });
+                            ;
+                        }
+                    }
+                    var countdown = setInterval(startTimer, 1000);
+                    
+                  
+            } else {  
+                password.focus(); // <-- If you don't do this first, your select code won't work
+                password.setSelectionRange(0, password.value.length);   
+                alert('Invalid Password!'); 
+            }
+            };
+
+</script>
+
+</body>
+</html>
