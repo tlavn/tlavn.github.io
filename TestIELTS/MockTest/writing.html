@@ -51,9 +51,9 @@
      
 
 
-    <!-- <form action="https://sheetdb.io/api/v1/g533yk2gudhb9" method="POST" id="sheetdb-form">
-        <input id="time" name="data[time]" type="hidden" form="sheetdb-form"  />
-    </form> -->
+    <form action="" method="POST" id="sform">
+        <input id="time" name="data[time]" type="hidden" form="sform"  />
+    </form>
     <!-- CONFIRM TO START NOTI-->
     <div id="confirm-start">
         <div class="confirm-start-container">
@@ -85,7 +85,7 @@
                 <div class="submit-start-grid">
                     <label for="name">
                         <p>ID</p> 
-                        <input autocomplete="new-password" type="text" form="sheetdb-form" name="data[name]" placeholder="Enter your ID" onkeypress="return event.keyCode != 13;">
+                        <input autocomplete="new-password" type="text" form="sform" name="data[name]" placeholder="Enter your ID" onkeypress="return event.keyCode != 13;">
                     </label>
                 </div>
                 
@@ -201,7 +201,7 @@
                     </p>
 
                         <label for="task1" >  
-                        <textarea id="task1" form="sheetdb-form" oninput="countWord1()" spellcheck="false" name="data[task1]" placeholder="Type your answer here..."></textarea>
+                        <textarea id="task1" form="sform" oninput="countWord1()" spellcheck="false" name="data[task1]" placeholder="Type your answer here..."></textarea>
                         <p> Word Count:
                             <span id="count1">0</span>
                         </p>
@@ -219,7 +219,7 @@
                     </p>
 
                         <label for="task2" >  
-                        <textarea id="task2" form="sheetdb-form" oninput="countWord2()" spellcheck="false" name="data[task2]" placeholder="Type your answer here..."></textarea>
+                        <textarea id="task2" form="sform" oninput="countWord2()" spellcheck="false" name="data[task2]" placeholder="Type your answer here..."></textarea>
                         <p> Word Count:
                             <span id="count2">0</span>
                         </p>
@@ -247,7 +247,7 @@
                 </div>
     
                 <div class="submit-group-btn">
-                    <button class="button" type="submit" form="sheetdb-form"> 
+                    <button class="button" type="submit" form="sform"> 
                         <img class="icon" src="assets/icon/submit.svg" alt="">
                         <span> Submit</span>
                     </button>
@@ -263,7 +263,7 @@
     var countdown;
 
      // SUMBIT ANSWER ON BUTTON
-     var form = document.getElementById('sheetdb-form');
+     var form = document.getElementById('sform');
         form.addEventListener("submit", e => {
             
             e.preventDefault();
@@ -272,7 +272,7 @@
 
             fetch(form.action, {
                 method: "POST",
-                body: new FormData(document.getElementById("sheetdb-form")),
+                body: new FormData(document.getElementById("sform")),
             }).then(
                
                 response => response.json()
@@ -383,12 +383,12 @@
                             presentTimeEl.innerText = "Time out!";
 
                             // AUTO SUBMIT
-                            var form = document.getElementById('sheetdb-form');
+                            var form = document.getElementById('sform');
                                  // Submit time
                                     $("#time").val(new Date()); 
                                     fetch(form.action, {
                                         method: "POST",
-                                        body: new FormData(document.getElementById("sheetdb-form")),
+                                        body: new FormData(document.getElementById("sform")),
                                     }).then(
                                         response => response.json()
                                     ).then((html) => {
